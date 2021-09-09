@@ -9,14 +9,9 @@
     "build:prod": "cross-env NODE_ENV=production webpack --config config/webpack.config.js",
     "test": "jest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npx lint-staged --verbose"
-    }
-  },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix  "
+      "eslint --fix"
     ],
     "*.{js,jsx,ts,tsx,json,css,md}": [
       "prettier --write"
