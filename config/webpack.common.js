@@ -2,16 +2,14 @@ const paths = require('./paths');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // extract css to files
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const tailwindcss = require('tailwindcss');
-const autoprefixer = require('autoprefixer'); // help tailwindcss to work
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  // Where webpack looks to start building the bundle
   entry: [paths.src + '/index.tsx'],
 
-  // Where webpack outputs the assets and bundles
   output: {
     path: paths.build,
     publicPath: '/',
@@ -22,7 +20,6 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
 
-  // Customize the webpack build process
   plugins: [
     // Removes/cleans build folders and unused assets when rebuilding
     new CleanWebpackPlugin(),
@@ -39,7 +36,6 @@ module.exports = {
     //   ],
     // }),
 
-    // Generates an HTML file from a template
     new HtmlWebpackPlugin({
       title: 'Movies app',
       template: paths.public + '/index.html', // Template file
@@ -52,7 +48,7 @@ module.exports = {
       async: false,
     }),
   ],
-  // Determine how modules within the project are treated
+
   module: {
     rules: [
       // Styles: Inject CSS into the head with source maps
