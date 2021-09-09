@@ -30,11 +30,10 @@
     "max-len": [2, 120, 2],
     "no-console": "warn",
     "comma-dangle": ["off", "never"],
-    "jsx-a11y/label-has-associated-control": "off",
     "react/jsx-filename-extension": [
       1,
       {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".css"]
       }
     ],
     "react/no-set-state": "off",
@@ -45,6 +44,9 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/ban-ts-comment": "error",
+    "@typescript-eslint/no-explicit-any": "error"
   }
 }
