@@ -1,6 +1,6 @@
 # ReactJS Program
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with Webpack (https://webpack.js.org).
 
 ## Available Scripts
 
