@@ -10,6 +10,11 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "./src/**/**.{js,jsx,ts,tsx}": [
       "eslint --fix"
