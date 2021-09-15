@@ -9,7 +9,7 @@ interface State {
   hasError: boolean;
 }
 
-class ErrorBoundaryContainer extends React.Component<Props, State> {
+class ErrorBoundary extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { hasError: false };
@@ -28,4 +28,4 @@ class ErrorBoundaryContainer extends React.Component<Props, State> {
   }
 }
 
-export default ErrorBoundaryContainer;
+export default ErrorBoundary;
