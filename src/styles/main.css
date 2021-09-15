@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-  background: #888888;
   outline: none;
+  background: #888888;
 }

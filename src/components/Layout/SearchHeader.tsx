@@ -6,7 +6,7 @@ const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement
   const [searchValue, setSearchValue] = useState('');
 
   const onSubmit = () => {
-    alert(`Looking for: ${searchValue}`);
+    if (searchValue) alert(`Looking for: ${searchValue}`);
   };
 
   return (
