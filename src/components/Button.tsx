@@ -2,7 +2,9 @@ import React, { ButtonHTMLAttributes } from 'react';
 import cx from 'classnames';
 
 const buttonVariants = {
-  primary: `text-white bg-primary border-primary`,
+  primary: 'text-white bg-primary border-primary',
+  'outline-primary': 'border-primary text-primary',
+  secondary: 'text-primary bg-gray68 border-gray68',
 };
 
 const buttonSizes = {
