@@ -1,17 +1,14 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Header from 'components/Layout/Header';
+import SearchHeader from 'components/Layout/SearchHeader';
 
 export default {
-  title: 'Components',
-  component: Header,
-} as ComponentMeta<typeof Header>;
+  title: 'Components/Layout',
+  component: SearchHeader,
+} as ComponentMeta<typeof SearchHeader>;
 
-const Template: ComponentStory<typeof Header> = (args) => <Header {...args} />;
+const Template: ComponentStory<typeof SearchHeader> = (args) => <SearchHeader {...args} />;
 
-export const HeaderContainer = Template.bind({});
-HeaderContainer.args = {
-  children: <div>Test</div>,
-  className: 'flex justify-center items-center w-full h-full bg-background text-white',
-};
+export const HeaderWithSearch = Template.bind({});
+HeaderWithSearch.args = {};

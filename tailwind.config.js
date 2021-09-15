@@ -8,9 +8,13 @@ module.exports = {
         background: '#232323',
         footer: '#424242',
         gray68: 'rgba(96, 96, 96, 0.68)',
+        gray80: 'rgba(50, 50, 50, 0.8)',
       },
       height: {
         17.5: '4.375rem',
+      },
+      backgroundImage: {
+        header: "url('../assets/images/header.png')",
       },
     },
   },
