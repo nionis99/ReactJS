@@ -22,7 +22,7 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
 
 const Modal = ({ children, title, close = false, size = 'default', className = '', ...restProps }: ModalProps) => (
   <div
-    className={cx('p-4 bg-content  rounded shadow-modal', absoluteCenter, modalSizes[size], className)}
+    className={cx('p-4 bg-content text-white rounded shadow-modal', absoluteCenter, modalSizes[size], className)}
     {...restProps}
   >
     {close && (
