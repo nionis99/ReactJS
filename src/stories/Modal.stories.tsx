@@ -1,17 +1,17 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Modal from 'containers/Modal';
+import ModalView from 'components/ModalView';
 
 export default {
   title: 'Components',
-  component: Modal,
-} as ComponentMeta<typeof Modal>;
+  component: ModalView,
+} as ComponentMeta<typeof ModalView>;
 
-const Template: ComponentStory<typeof Modal> = (args) => <Modal {...args} />;
+const Template: ComponentStory<typeof ModalView> = (args) => <ModalView {...args} />;
 
-export const ModalComponent = Template.bind({});
-ModalComponent.args = {
+export const Modal = Template.bind({});
+Modal.args = {
   title: 'Title',
   children: 'Content',
   close: true,

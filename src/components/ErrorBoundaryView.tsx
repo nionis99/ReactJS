@@ -1,7 +1,7 @@
 import React from 'react';
 import Landing from '../layout/Landing';
-import Modal from '../containers/Modal';
 import RefreshIcon from '../assets/icons/refresh.svg';
+import Modal from 'containers/Modal';
 
 interface Props {
   onRefresh: () => void;
@@ -9,7 +9,7 @@ interface Props {
 
 const ErrorBoundaryView = ({ onRefresh }: Props) => (
   <Landing>
-    <Modal title="Something wrong">
+    <Modal title="Something wrong" isOpen={true}>
       <div className="flex cursor-pointer bg-primary rounded-full p-5">
         <RefreshIcon className="w-20 h-20" onClick={onRefresh} />
       </div>
