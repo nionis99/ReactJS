@@ -1,10 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import ErrorBoundaryView from 'components/Error/ErrorBoundaryView';
+import ErrorBoundaryView from 'components/ErrorBoundaryView';
 
 export default {
-  title: 'Components/Layout',
+  title: 'Components/layout',
   component: ErrorBoundaryView,
 } as ComponentMeta<typeof ErrorBoundaryView>;
 

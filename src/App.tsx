@@ -1,8 +1,8 @@
 import React from 'react';
-import ErrorBoundary from './components/Error/ErrorBoundary';
-import SearchHeader from './components/Layout/SearchHeader';
-import Content from './components/Layout/Content';
-import Footer from './components/Layout/Footer';
+import ErrorBoundary from './containers/ErrorBoundary';
+import SearchHeader from './layout/SearchHeader';
+import Content from './layout/Content';
+import Footer from './layout/Footer';
 import './styles/main.css';
 
 const App = () => (

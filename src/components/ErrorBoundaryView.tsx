@@ -1,7 +1,7 @@
 import React from 'react';
-import Landing from '../Layout/Landing';
-import Modal from '../Modal';
-import RefreshIcon from '../../assets/icons/refresh.svg';
+import Landing from '../layout/Landing';
+import Modal from '../containers/Modal';
+import RefreshIcon from '../assets/icons/refresh.svg';
 
 interface Props {
   onRefresh: () => void;

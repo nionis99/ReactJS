@@ -1,10 +1,10 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import SearchHeader from 'components/Layout/SearchHeader';
+import SearchHeader from 'layout/SearchHeader';
 
 export default {
-  title: 'Components/Layout',
+  title: 'Components/layout',
   component: SearchHeader,
 } as ComponentMeta<typeof SearchHeader>;
 
