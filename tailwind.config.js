@@ -14,8 +14,8 @@ module.exports = {
         17.5: '4.375rem',
       },
       backgroundImage: {
-        header: "url('../assets/images/header.png')",
-        landing: "url('../assets/images/landing.png')",
+        header: "url('assets/images/header.png')",
+        landing: "url('assets/images/landing.png')",
       },
       boxShadow: {
         modal:

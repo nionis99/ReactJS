@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import XIcon from '../assets/icons/x.svg';
+import XIcon from 'assets/icons/x.svg';
 import cx from 'classnames';
 
 const absoluteCenter = 'absolute top-1/2 left-1/2 transform -translate-x-2/4 -translate-y-2/4';

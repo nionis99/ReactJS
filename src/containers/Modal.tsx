@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, useCallback, useEffect } from 'react';
-import ModalView from '../components/ModalView';
+import ModalView from 'components/ModalView';
 
 const modalSizes = {
   default: 'h-auto w-auto',

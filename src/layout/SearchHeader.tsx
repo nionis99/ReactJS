@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, useState } from 'react';
-import AppLogo from '../components/Logo';
-import Button from '../components/Button';
+import AppLogo from 'components/Logo';
+import Button from 'components/Button';
 
 const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement>) => {
   const [searchValue, setSearchValue] = useState('');

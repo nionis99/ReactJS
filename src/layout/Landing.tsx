@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import AppLogo from '../components/Logo';
+import AppLogo from 'components/Logo';
 
 interface LandingProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

@@ -1,9 +1,9 @@
 import React from 'react';
-import ErrorBoundary from './containers/ErrorBoundary';
-import SearchHeader from './layout/SearchHeader';
-import Content from './layout/Content';
-import Footer from './layout/Footer';
-import './styles/main.css';
+import ErrorBoundary from 'containers/ErrorBoundary';
+import SearchHeader from 'layout/SearchHeader';
+import Content from 'layout/Content';
+import Footer from 'layout/Footer';
+import 'styles/main.css';
 
 const App = () => (
   <ErrorBoundary>

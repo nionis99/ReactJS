@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorBoundaryView from '../components/ErrorBoundaryView';
+import ErrorBoundaryView from 'components/ErrorBoundaryView';
 
 interface Props {
   children: React.ReactNode;

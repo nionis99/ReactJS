@@ -1,6 +1,6 @@
 import React from 'react';
-import Landing from '../layout/Landing';
-import RefreshIcon from '../assets/icons/refresh.svg';
+import RefreshIcon from 'assets/icons/refresh.svg';
+import Landing from 'layout/Landing';
 import Modal from 'containers/Modal';
 
 interface Props {
