@@ -20,7 +20,7 @@ const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement
         <label className="flex text-5xl">FIND YOUR MOVIE</label>
         <form className="flex mt-9">
           <input
-            className="flex rounded p-4 text-lg w-full bg-gray80 opacity-60"
+            className="flex rounded p-4 text-lg w-full bg-gray80 opacity-60 focus:outline-none"
             name="search"
             onInput={(e) => setSearchValue(e.currentTarget.value)}
             placeholder="What do you want to watch?"
