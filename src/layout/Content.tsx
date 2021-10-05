@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import MovieCard from 'components/MovieCard';
-import NavigationTabs from 'components/Navigation';
+import NavigationTabs from 'components/MovieFilters';
 import KillBill from 'assets/images/movie1.png';
 import Bohemia from 'assets/images/movie2.png';
 import PulpFiction from 'assets/images/movie3.png';
@@ -23,7 +23,10 @@ const Content = ({ className = '', ...restProps }: HTMLAttributes<HTMLDivElement
   <div className={`flex items-center justify-center bg-content w-full h-auto text-white ${className}`} {...restProps}>
     <div className="flex-col">
       <NavigationTabs />
-      <div className="grid gap-4 grid-cols-4 py-5">
+      <div className="py-4">
+        <span className="font-bold">{fakeMovieData.length}</span> <span>movies found</span>
+      </div>
+      <div className="grid gap-4 grid-cols-4 pb-6">
         {fakeMovieData.map((movie, index) => (
           <MovieCard
             key={index}

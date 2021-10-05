@@ -17,7 +17,7 @@ const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement
       </div>
       <div className="flex-col mx-16 my-11">
         <label className="flex text-5xl">FIND YOUR MOVIE</label>
-        <div className="flex mt-9 ">
+        <form className="flex mt-9">
           <input
             className="flex rounded p-4 text-lg w-full bg-gray80 opacity-60"
             name="search"
@@ -28,10 +28,11 @@ const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement
             className="flex ml-2 transform uppercase"
             title="Search"
             variant="primary"
+            type="submit"
             size="large"
             onClick={onSubmit}
           />
-        </div>
+        </form>
       </div>
     </header>
   );
