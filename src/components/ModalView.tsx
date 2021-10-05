@@ -6,9 +6,9 @@ const absoluteCenter = 'absolute top-1/2 left-1/2 transform -translate-x-2/4 -tr
 
 const modalSizes = {
   default: 'h-auto w-2/3',
-  large: 'h-2/3 w-2/3',
-  medium: 'h-1/2 w-1/2',
-  small: 'h-1/3 w-1/3',
+  large: 'h-auto w-3/4',
+  medium: 'h-auto w-2/3',
+  small: 'h-auto w-1/2',
 };
 
 type ModalSize = keyof typeof modalSizes;
@@ -45,8 +45,12 @@ const ModalView = ({
         <XIcon className="ml-auto justify-end w-6 h-6 cursor-pointer" onClick={onClose} />
       </div>
     )}
-    <div className="flex items-center px-14 py-2 w-full h-full">
-      {!!title && <div className="flex w-full text-4xl text-white text-left font-medium uppercase">{title}</div>}
+    <div className="flex flex-col items-center px-14 py-2 w-full h-full">
+      {!!title && (
+        <div className="flex w-full font-light transform uppercase text-4xl text-white text-left uppercase">
+          {title}
+        </div>
+      )}
       <div className={cx('flex flex-col w-full h-full', { 'mt-4': !!title })}>{children}</div>
     </div>
   </div>
