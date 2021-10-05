@@ -9,6 +9,7 @@ const buttonVariants = {
 
 const buttonSizes = {
   large: 'px-16 py-4',
+  medium: 'px-11 py-3',
   small: 'px-4 py-2',
 };
 
