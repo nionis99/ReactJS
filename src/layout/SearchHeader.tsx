@@ -5,7 +5,8 @@ import Button from 'components/Button';
 const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement>) => {
   const [searchValue, setSearchValue] = useState('');
 
-  const onSubmit = () => {
+  const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (searchValue) alert(`Looking for: ${searchValue}`);
   };
 
