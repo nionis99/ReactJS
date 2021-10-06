@@ -26,7 +26,7 @@ const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement
             placeholder="What do you want to watch?"
           />
           <Button
-            className="flex ml-2 transform uppercase"
+            className="flex ml-2 uppercase"
             title="Search"
             variant="primary"
             type="submit"

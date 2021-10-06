@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import ErrorBoundaryView from 'components/ErrorBoundaryView';
 
 export default {
-  title: 'Components/layout',
+  title: 'Components/Layout',
   component: ErrorBoundaryView,
 } as ComponentMeta<typeof ErrorBoundaryView>;
 

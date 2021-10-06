@@ -47,9 +47,7 @@ const ModalView = ({
     )}
     <div className="flex flex-col items-center px-14 py-2 w-full h-full">
       {!!title && (
-        <div className="flex w-full font-light transform uppercase text-4xl text-white text-left uppercase">
-          {title}
-        </div>
+        <div className="flex w-full font-light uppercase text-4xl text-white text-left uppercase">{title}</div>
       )}
       <div className={cx('flex flex-col w-full h-full', { 'mt-4': !!title })}>{children}</div>
     </div>

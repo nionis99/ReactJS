@@ -1,9 +1,10 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 import ArrowDown from 'assets/icons/arrowDown.svg';
+import { genres } from '../../__mocks__/data';
 
 const defaultTabClassName =
-  'text-white p-5 cursor-pointer hover:text-primary focus:outline-none transform uppercase font-medium border-b-2';
+  'text-white p-5 cursor-pointer hover:text-primary focus:outline-none uppercase font-medium border-b-2';
 
 // TODO : Nav links || Filtering
 const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => (
@@ -15,13 +16,20 @@ const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => (
     <span className={defaultTabClassName}>Horror</span>
     <span className={defaultTabClassName}>Crime</span>
     <span className="cursor-default mx-auto w-full border-b-2" />
-    <span className="text-white p-5 transform font-normal uppercase border-b-2 text-opacity-50 whitespace-nowrap ">
-      Sort by
-    </span>
-    <span className={cx(defaultTabClassName, 'flex flex-row whitespace-nowrap')}>
-      Release date
-      <ArrowDown className="h-full justify-center align-center w-3 h-3 ml-3" />
-    </span>
+    <span className="text-white p-5 uppercase font-normal border-b-2 text-opacity-50 whitespace-nowrap">Sort by</span>
+    <div className="relative w-full">
+      <select
+        className="block appearance-none w-full bg-transparent text-white p-5 border-b-2 font-medium 
+        focus:outline-none"
+      >
+        {genres.map((genre, index) => (
+          <option key={index}>{genre}</option>
+        ))}
+      </select>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+        <ArrowDown className="fill-current h-3 w-3" />
+      </div>
+    </div>
   </nav>
 );
 
