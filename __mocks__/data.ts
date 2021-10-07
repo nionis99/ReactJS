@@ -7,6 +7,7 @@ import Dogs from '../src/assets/images/movie5.png';
 import Movie from 'types/Movie';
 
 export const genres = ['Comedy', 'Documentary', 'Horror', 'Crime'];
+export const sortOptions = ['Genre', 'Rating', 'Release date'];
 const description =
   'Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a ' +
   'suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to ' +
