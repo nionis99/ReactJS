@@ -17,10 +17,10 @@ const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => (
     <span className={defaultTabClassName}>Crime</span>
     <span className="cursor-default mx-auto w-full border-b-2" />
     <span className="text-white p-5 uppercase font-normal border-b-2 text-opacity-50 whitespace-nowrap">Sort by</span>
-    <div className="relative w-full">
+    <div className="relative w-full xl:w-1/3 md:2/3">
       <select
-        className="block appearance-none w-full bg-transparent text-white p-5 border-b-2 font-medium 
-        focus:outline-none"
+        className="block appearance-none w-full bg-transparent text-white p-5 border-b-2 font-medium
+        focus:outline-none truncate"
       >
         {genres.map((genre, index) => (
           <option key={index}>{genre}</option>

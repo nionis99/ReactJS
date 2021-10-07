@@ -31,27 +31,30 @@ const ModalView = ({
   className = '',
   ...restProps
 }: ModalViewProps) => (
-  <div
-    className={cx(
-      'flex flex-col p-4 bg-content text-white rounded shadow-modal',
-      absoluteCenter,
-      modalSizes[size],
-      className,
-    )}
-    {...restProps}
-  >
-    {close && (
-      <div className="flex items-center w-full">
-        <XIcon className="ml-auto justify-end w-6 h-6 cursor-pointer" onClick={onClose} />
-      </div>
-    )}
-    <div className="flex flex-col items-center px-14 py-2 w-full h-full">
-      {!!title && (
-        <div className="flex w-full font-light uppercase text-4xl text-white text-left uppercase">{title}</div>
+  <>
+    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" />
+    <div
+      className={cx(
+        'flex flex-col p-4 bg-content text-white rounded shadow-modal z-10',
+        absoluteCenter,
+        modalSizes[size],
+        className,
       )}
-      <div className={cx('flex flex-col w-full h-full', { 'mt-4': !!title })}>{children}</div>
+      {...restProps}
+    >
+      {close && (
+        <div className="flex items-center w-full">
+          <XIcon className="ml-auto justify-end w-6 h-6 cursor-pointer" onClick={onClose} />
+        </div>
+      )}
+      <div className="flex flex-col items-center px-14 py-2 w-full h-full">
+        {!!title && (
+          <div className="flex w-full font-light uppercase text-4xl text-white text-left uppercase">{title}</div>
+        )}
+        <div className={cx('flex flex-col w-full h-full', { 'mt-4': !!title })}>{children}</div>
+      </div>
     </div>
-  </div>
+  </>
 );
 
 export default ModalView;

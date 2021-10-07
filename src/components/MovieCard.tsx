@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Dots from 'assets/icons/dots.svg';
+import Movie from 'types/Movie';
 
 interface MovieCardProps {
-  imageSource: string;
-  title: string;
-  years: number;
-  description: string;
+  movie: Movie;
+  onClick: () => void;
 }
 
-const MovieCard = ({ imageSource, title, years, description }: MovieCardProps) => {
+const MovieCard = ({ movie, onClick }: MovieCardProps) => {
+  const { imageSource, title, years, description } = movie;
   const [isBlurred, setIsBlurred] = useState(false);
 
   const onCardMouseEnter = () => setIsBlurred(true);
@@ -19,6 +19,7 @@ const MovieCard = ({ imageSource, title, years, description }: MovieCardProps) =
       className="flex-col cursor-pointer text-white text-opacity-75"
       onMouseEnter={onCardMouseEnter}
       onMouseLeave={onCardMouseLeave}
+      onClick={onClick}
     >
       <div className="relative pb-4">
         {isBlurred && (

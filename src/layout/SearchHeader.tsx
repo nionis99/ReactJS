@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useState } from 'react';
 import AppLogo from 'components/Logo';
 import Button from 'components/Button';
-import MovieFormModal from '../components/Modals/MovieFormModal';
+import MovieFormModal from 'components/Modals/MovieFormModal';
 
 const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement>) => {
   const [searchValue, setSearchValue] = useState('');
