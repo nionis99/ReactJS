@@ -46,7 +46,7 @@ const MovieForm = ({ onSubmit, onReset }: MovieFormProps) => {
           </label>
           <textarea
             className="appearance-none w-full bg-gray80 border-gray80 text-white border rounded py-2 px-4 mb-3 
-            leading-tight focus:outline-none focus:border-gray-200"
+            leading-tight focus:outline-none focus:border-gray-200 resize-none"
             name="overview"
             placeholder="Movie description"
             rows={6}
