@@ -8,7 +8,7 @@ export default {
   component: FormOfMovie,
 } as ComponentMeta<typeof FormOfMovie>;
 
-const Template: ComponentStory<typeof FormOfMovie> = () => <FormOfMovie />;
+const Template: ComponentStory<typeof FormOfMovie> = (args) => <FormOfMovie {...args} />;
 
 export const MovieForm = Template.bind({});
 MovieForm.args = {};
