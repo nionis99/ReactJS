@@ -8,7 +8,7 @@ interface MovieCardProps {
 }
 
 const MovieCard = ({ movie, onClick }: MovieCardProps) => {
-  const { imageSource, title, years, description } = movie;
+  const { imageSource, title, years, genre } = movie;
   const [isBlurred, setIsBlurred] = useState(false);
 
   const onCardMouseEnter = () => setIsBlurred(true);
@@ -33,7 +33,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
         <span className="font-bold">{title}</span>
         <span className="ml-auto px-2 py-1 text-xs border-2 rounded-lg border-gray-400 border-opacity-50">{years}</span>
       </p>
-      <small>{description}</small>
+      <small>{genre}</small>
     </div>
   );
 };

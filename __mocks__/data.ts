@@ -7,12 +7,18 @@ import Dogs from '../src/assets/images/movie5.png';
 import Movie from 'types/Movie';
 
 export const genres = ['Comedy', 'Documentary', 'Horror', 'Crime'];
+const description =
+  'Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a ' +
+  'suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to ' +
+  'take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge ' +
+  '(Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated ' +
+  'people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra';
 
 export const fakeMovieData: Movie[] = [
   {
     imageSource: KillBill,
     title: 'Kill Bill: Vol 2',
-    description: 'Oscar winning Movie',
+    description: description,
     years: 1994,
     genre: 'Action, Adventure',
     rating: 7.8,
@@ -21,7 +27,7 @@ export const fakeMovieData: Movie[] = [
   {
     imageSource: Avengers,
     title: 'Avengers: War of Infinity',
-    description: 'Action & Adventure',
+    description: description,
     years: 2004,
     genre: 'Action, Adventure',
     rating: 7.8,
@@ -30,7 +36,7 @@ export const fakeMovieData: Movie[] = [
   {
     imageSource: Bohemia,
     title: 'Bohemian Rhapsody',
-    description: 'Drama, Biography, Music',
+    description: description,
     years: 2003,
     genre: 'Action, Adventure',
     rating: 7.8,
@@ -39,7 +45,7 @@ export const fakeMovieData: Movie[] = [
   {
     imageSource: PulpFiction,
     title: 'Pulp Fiction',
-    description: 'Action & Adventure',
+    description: description,
     years: 2004,
     genre: 'Action, Adventure',
     rating: 7.8,
@@ -48,7 +54,7 @@ export const fakeMovieData: Movie[] = [
   {
     imageSource: Inception,
     title: 'Inception',
-    description: 'Action & Adventure',
+    description: description,
     years: 2003,
     genre: 'Action, Adventure',
     rating: 7.8,
@@ -57,7 +63,7 @@ export const fakeMovieData: Movie[] = [
   {
     imageSource: Dogs,
     title: 'Reservoir dogs',
-    description: 'Oscar winning Movie',
+    description: description,
     years: 1994,
     genre: 'Action, Adventure',
     rating: 7.8,
@@ -66,7 +72,7 @@ export const fakeMovieData: Movie[] = [
   {
     imageSource: Avengers,
     title: 'Avengers: War of Infinity',
-    description: 'Action & Adventure',
+    description: description,
     years: 2004,
     genre: 'Action, Adventure',
     rating: 7.8,
@@ -75,7 +81,7 @@ export const fakeMovieData: Movie[] = [
   {
     imageSource: Inception,
     title: 'Inception',
-    description: 'Action & Adventure',
+    description: description,
     years: 2003,
     genre: 'Action, Adventure',
     rating: 7.8,
