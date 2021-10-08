@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Dots from 'assets/icons/dots.svg';
+import XIcon from 'assets/icons/x.svg';
 import Movie from 'types/Movie';
 
 interface MovieCardProps {
@@ -10,9 +11,15 @@ interface MovieCardProps {
 const MovieCard = ({ movie, onClick }: MovieCardProps) => {
   const { imageSource, title, years, genre } = movie;
   const [isBlurred, setIsBlurred] = useState(false);
+  const [hasMoreActionSelected, setHasMoreActionSelected] = useState(false);
 
+  const onMoreActionClicked = () => setHasMoreActionSelected(true);
+  const onMoreActionClose = () => setHasMoreActionSelected(false);
   const onCardMouseEnter = () => setIsBlurred(true);
-  const onCardMouseLeave = () => setIsBlurred(false);
+  const onCardMouseLeave = () => {
+    if (hasMoreActionSelected) setHasMoreActionSelected(false);
+    setIsBlurred(false);
+  };
 
   return (
     <div
@@ -23,9 +30,20 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
     >
       <div className="relative pb-4">
         {isBlurred && (
-          <div className="absolute top-2 right-2">
-            <Dots />
-          </div>
+          <>
+            <div className="absolute top-2 right-2" onClick={onMoreActionClicked}>
+              <Dots />
+            </div>
+            {hasMoreActionSelected && (
+              <ul className="absolute w-48 right-2 py-1 mt-2 bg-white bg-content rounded shadow-modal">
+                <p className="w-full">
+                  <XIcon className="ml-auto mb-1 mr-2 w-3 h-3" onClick={onMoreActionClose} />
+                </p>
+                <li className="px-4 py-2 text-white hover:bg-primary">Edit</li>
+                <li className="px-4 py-2 text-white hover:bg-primary">Delete</li>
+              </ul>
+            )}
+          </>
         )}
         <img src={imageSource} alt={title} />
       </div>

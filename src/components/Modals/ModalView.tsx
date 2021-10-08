@@ -11,7 +11,7 @@ const modalSizes = {
   small: 'h-auto w-1/2',
 };
 
-type ModalSize = keyof typeof modalSizes;
+export type ModalSize = keyof typeof modalSizes;
 
 interface ModalViewProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;

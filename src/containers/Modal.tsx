@@ -1,14 +1,5 @@
 import React, { HTMLAttributes, useCallback, useEffect } from 'react';
-import ModalView from 'components/Modals/ModalView';
-
-const modalSizes = {
-  default: 'h-auto w-auto',
-  large: 'h-2/3 w-2/3',
-  medium: 'h-1/2 w-1/2',
-  small: 'h-1/3 w-1/3',
-};
-
-type ModalSize = keyof typeof modalSizes;
+import ModalView, { ModalSize } from 'components/Modals/ModalView';
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
