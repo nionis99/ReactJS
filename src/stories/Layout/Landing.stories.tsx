@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Landing from 'layout/Landing';
 
 export default {
-  title: 'Components/layout',
+  title: 'Components/Layout',
   component: Landing,
 } as ComponentMeta<typeof Landing>;
 

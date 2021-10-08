@@ -17,7 +17,8 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.js', 'jsx'],
+    alias: paths.alias,
   },
 
   plugins: [
