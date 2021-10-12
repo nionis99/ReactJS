@@ -4,16 +4,88 @@ import Bohemia from '../src/assets/images/movie2.png';
 import PulpFiction from '../src/assets/images/movie3.png';
 import Inception from '../src/assets/images/movie4.png';
 import Dogs from '../src/assets/images/movie5.png';
+import Movie from 'types/Movie';
 
 export const genres = ['Comedy', 'Documentary', 'Horror', 'Crime'];
+export const sortOptions = ['Genre', 'Rating', 'Release date'];
+const description =
+  'Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a ' +
+  'suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to ' +
+  'take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge ' +
+  '(Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives of these seemingly unrelated ' +
+  'people are woven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra';
 
-export const fakeMovieData = [
-  { imageSource: KillBill, title: 'Kill Bill: Vol 2', description: 'Oscar winning Movie', years: 1994 },
-  { imageSource: Avengers, title: 'Avengers: War of Infinity', description: 'Action & Adventure', years: 2004 },
-  { imageSource: Bohemia, title: 'Bohemian Rhapsody', description: 'Drama, Biography, Music', years: 2003 },
-  { imageSource: PulpFiction, title: 'Pulp Fiction', description: 'Action & Adventure', years: 2004 },
-  { imageSource: Inception, title: 'Inception', description: 'Action & Adventure', years: 2003 },
-  { imageSource: Dogs, title: 'Reservoir dogs', description: 'Oscar winning Movie', years: 1994 },
-  { imageSource: Avengers, title: 'Avengers: War of Infinity', description: 'Action & Adventure', years: 2004 },
-  { imageSource: Inception, title: 'Inception', description: 'Action & Adventure', years: 2003 },
+export const fakeMovieData: Movie[] = [
+  {
+    imageSource: KillBill,
+    title: 'Kill Bill: Vol 2',
+    description: description,
+    years: 1994,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 200,
+  },
+  {
+    imageSource: Avengers,
+    title: 'Avengers: War of Infinity',
+    description: description,
+    years: 2004,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 200,
+  },
+  {
+    imageSource: Bohemia,
+    title: 'Bohemian Rhapsody',
+    description: description,
+    years: 2003,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 200,
+  },
+  {
+    imageSource: PulpFiction,
+    title: 'Pulp Fiction',
+    description: description,
+    years: 2004,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 200,
+  },
+  {
+    imageSource: Inception,
+    title: 'Inception',
+    description: description,
+    years: 2003,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 200,
+  },
+  {
+    imageSource: Dogs,
+    title: 'Reservoir dogs',
+    description: description,
+    years: 1994,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 200,
+  },
+  {
+    imageSource: Avengers,
+    title: 'Avengers: War of Infinity',
+    description: description,
+    years: 2004,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 200,
+  },
+  {
+    imageSource: Inception,
+    title: 'Inception',
+    description: description,
+    years: 2003,
+    genre: 'Action, Adventure',
+    rating: 7.8,
+    duration: 160,
+  },
 ];

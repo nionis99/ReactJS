@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 import ArrowDown from 'assets/icons/arrowDown.svg';
-import { genres } from '../../__mocks__/data';
+import { sortOptions } from '../../__mocks__/data';
 
 const defaultTabClassName =
   'text-white p-5 cursor-pointer hover:text-primary focus:outline-none uppercase font-medium border-b-2';
@@ -17,13 +17,13 @@ const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => (
     <span className={defaultTabClassName}>Crime</span>
     <span className="cursor-default mx-auto w-full border-b-2" />
     <span className="text-white p-5 uppercase font-normal border-b-2 text-opacity-50 whitespace-nowrap">Sort by</span>
-    <div className="relative w-full">
+    <div className="relative w-full xl:w-1/3 md:2/3">
       <select
-        className="block appearance-none w-full bg-transparent text-white p-5 border-b-2 font-medium 
-        focus:outline-none"
+        className="block appearance-none w-full bg-transparent text-white p-5 border-b-2 font-medium
+        focus:outline-none truncate"
       >
-        {genres.map((genre, index) => (
-          <option key={index}>{genre}</option>
+        {sortOptions.map((sortOption, index) => (
+          <option key={index}>{sortOption}</option>
         ))}
       </select>
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">

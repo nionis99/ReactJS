@@ -1,23 +1,21 @@
 import React, { HTMLAttributes, useState } from 'react';
 import AppLogo from 'components/Logo';
 import Button from 'components/Button';
-import MovieFormModal from '../components/Modals/MovieFormModal';
 
-const SearchHeader = ({ className = '', ...rest }: HTMLAttributes<HTMLDivElement>) => {
+interface SearchHeaderProps extends HTMLAttributes<HTMLDivElement> {
+  openAddMovie: () => void;
+}
+
+const SearchHeader = ({ openAddMovie, className = '', ...rest }: SearchHeaderProps) => {
   const [searchValue, setSearchValue] = useState('');
-  const [isMovieFormModalOpen, setIsMovieFormModalOpen] = useState(false);
 
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (searchValue) alert(`Looking for: ${searchValue}`);
   };
 
-  const openAddMovie = () => setIsMovieFormModalOpen(true);
-  const closeAddMovie = () => setIsMovieFormModalOpen(false);
-
   return (
     <header className={`flex-col h-96 bg-header py-5 px-16 text-white bg-cover ${className}`} {...rest}>
-      <MovieFormModal isOpen={isMovieFormModalOpen} onClose={closeAddMovie} title="Add movie" />
       <div className="flex w-full justify-between items-start">
         <AppLogo />
         <Button title="+ ADD MOVIE" variant="secondary" size="small" onClick={openAddMovie} />
