@@ -16,13 +16,13 @@ const MoviesPage = () => {
 
   return (
     <>
-      <MovieFormModal isOpen={isMovieFormOpen} onClose={onCloseAddMovieForm} title="Add movie" />
+      <MovieFormModal isOpen={isMovieFormOpen} onClose={onCloseAddMovieForm} title='Add movie' />
       {selectedMovie ? (
         <MovieDetailsHeader movie={selectedMovie} onSearchClick={onSearchIconClick} />
       ) : (
         <SearchHeader openAddMovie={onOpenAddMovieForm} />
       )}
-      <div className="w-full h-2.5" />
+      <div className='w-full h-2.5' />
       <Content onSelectedClick={setSelectedMovie} />
       <Footer />
     </>
