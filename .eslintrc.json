@@ -37,7 +37,9 @@
       }
     ],
     "react/no-set-state": "off",
-    "prettier/prettier": ["error"],
+    "prettier/prettier": [
+      "error"
+    ],
     "react/jsx-props-no-spreading": "off",
     "prefer-promise-reject-errors": "off",
     "camelcase": "off",

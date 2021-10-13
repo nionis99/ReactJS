@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import DeleteConfirmation from 'components/Modals/DeleteConfirmation';
+import MovieFormModal from 'components/Modals/MovieFormModal';
+import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
-import Movie from 'types/Movie';
-import MovieFormModal from './Modals/MovieFormModal';
+import moment from 'moment';
 
 interface MovieCardProps {
   movie: Movie;
@@ -11,13 +12,13 @@ interface MovieCardProps {
 }
 
 const MovieCard = ({ movie, onClick }: MovieCardProps) => {
-  const { imageSource, title, years, genre } = movie;
+  const { poster_path, title, release_date, genres } = movie;
+  const yearsOfTheMovie = moment(release_date).format('YYYY');
   const [isBlurred, setIsBlurred] = useState(false);
   const [hasMoreActionSelected, setHasMoreActionSelected] = useState(false);
   const [isDeletingMovie, setIsDeletingMovie] = useState(false);
   const [editingMovie, setEditingMovie] = useState<Movie | undefined>();
 
-  const onCardMouseEnter = () => setIsBlurred(true);
   const onCardMouseLeave = () => {
     if (hasMoreActionSelected) setHasMoreActionSelected(false);
     setIsBlurred(false);
@@ -77,15 +78,15 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
               )}
             </>
           )}
-          <img src={imageSource} alt={title} />
+          <img src={poster_path} alt={title} />
         </div>
         <p className="flex w-full">
           <span className="font-bold">{title}</span>
-          <span className="ml-auto px-2 py-1 text-xs border-2 rounded-lg border-gray-400 border-opacity-50">
-            {years}
+          <span className="ml-auto px-2 h-7 py-1 text-xs border-2 rounded-lg border-gray-400 border-opacity-50">
+            {yearsOfTheMovie}
           </span>
         </p>
-        <small>{genre}</small>
+        <small>{genres.join(', ')}</small>
       </div>
       <MovieFormModal
         isOpen={!!editingMovie}

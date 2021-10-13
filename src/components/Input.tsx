@@ -1,11 +1,12 @@
 import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 
-interface InputProps extends HTMLAttributes<HTMLDivElement> {
+interface InputProps extends HTMLAttributes<HTMLInputElement> {
   label: string;
   placeholder?: string;
   errorMessage?: string;
   type?: React.HTMLInputTypeAttribute;
+  name?: React.HTMLInputTypeAttribute;
   min?: string;
   max?: string;
   step?: string;
@@ -16,15 +17,10 @@ const inputClassName =
   ' focus:outline-none focus:border-gray-200';
 const labelClassName = 'block tracking-wide text-xs font-bold mb-2 upper-case';
 
-const Input = ({ label, placeholder, errorMessage, className, type, ...rest }: InputProps) => (
+const Input = ({ label, errorMessage, className, ...rest }: InputProps) => (
   <div className={className}>
     <label className={cx(labelClassName, errorMessage ? 'text-red-500' : 'text-primary')}>{label}</label>
-    <input
-      className={cx(inputClassName, errorMessage ? 'border-red-500' : 'border-gray80')}
-      placeholder={placeholder}
-      type={type}
-      {...rest}
-    />
+    <input className={cx(inputClassName, errorMessage ? 'border-red-500' : 'border-gray80')} {...rest} />
     {errorMessage && <p className="text-red-500 text-xs italic">{errorMessage}</p>}
   </div>
 );

@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { Reducer } from 'redux';
 import { MoviesActions } from 'actions/movieActions';
 import { MovieActionsTypes } from 'actions/movieActions/types';
@@ -6,26 +5,23 @@ import { Movie } from './types';
 
 export interface MoviesState {
   data: Movie[] | [];
-  total: number;
+  totalAmount: number;
   offset: number;
   limit: number;
   loading: boolean;
-  error: String | null;
+  error: string | null;
 }
 
 const initialState = {
   data: [],
-  total: 0,
+  totalAmount: 0,
   offset: 0,
   limit: 0,
   loading: false,
   error: null,
 };
 
-export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (
-  state = initialState,
-  action,
-) => {
+export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = initialState, action) => {
   switch (action.type) {
     case MoviesActions.FETCH_MOVIE:
     case MoviesActions.FETCH_MOVIES:
@@ -41,14 +37,19 @@ export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (
     case MoviesActions.DELETE_MOVIE_FAIL:
       return { ...state, loading: false };
 
+    // TODO: Crud state changes for immutable data
     case MoviesActions.FETCH_MOVIES_SUCCESS:
+      return {
+        ...state,
+        ...action.payload,
+        loading: false,
+      };
     case MoviesActions.FETCH_MOVIE_SUCCESS:
     case MoviesActions.ADD_MOVIE_SUCCESS:
     case MoviesActions.EDIT_MOVIE_SUCCESS:
     case MoviesActions.DELETE_MOVIE_SUCCESS:
       return {
         ...state,
-        data: [...state.data],
         loading: false,
       };
 

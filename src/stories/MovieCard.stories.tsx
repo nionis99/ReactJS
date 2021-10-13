@@ -18,12 +18,13 @@ const Template: ComponentStory<typeof MovieCard> = (args) => (
 export const MovieItem = Template.bind({});
 MovieItem.args = {
   movie: {
+    id: 1,
     title: 'X-Man',
-    imageSource: movieImageSrc,
-    description: 'Movie about mutants',
-    years: 2016,
-    rating: 7.8,
-    duration: 160,
-    genre: 'Action',
+    poster_path: movieImageSrc,
+    overview: 'Movie about mutants',
+    release_date: '2016',
+    vote_average: 7.8,
+    runtime: 160,
+    genres: ['Action', 'Adventure'],
   },
 };

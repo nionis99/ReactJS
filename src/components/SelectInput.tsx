@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import ArrowDown from 'assets/icons/arrowDown.svg';
 
 interface SelectInputProps<T> extends HTMLAttributes<HTMLDivElement> {
-  options: T[];
+  options?: T[];
   label?: string;
 }
 
@@ -15,7 +15,7 @@ function SelectInput<T>({ options, label, className }: SelectInputProps<T>) {
           className="block appearance-none w-full bg-gray80 border border-gray80 text-white h-12 py-2 px-4 pr-8 
           rounded leading-tight focus:outline-none focus:border-gray-200"
         >
-          {options.map((option, index) => (
+          {options?.map((option, index) => (
             <option key={index}>{option}</option>
           ))}
         </select>

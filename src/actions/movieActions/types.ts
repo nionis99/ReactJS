@@ -66,7 +66,8 @@ interface EditMovieFail {
   type: MoviesActions.EDIT_MOVIE_FAIL;
 }
 
-export type MovieActionsTypes = FetchMovies
+export type MovieActionsTypes =
+  | FetchMovies
   | FetchMoviesSuccess
   | FetchMoviesFail
   | FetchMovie

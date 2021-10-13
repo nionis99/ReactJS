@@ -14,4 +14,4 @@ export type Movies = {
   total: number;
   offset: number;
   limit: number;
-}
+};

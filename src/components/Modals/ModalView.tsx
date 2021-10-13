@@ -14,7 +14,6 @@ const modalSizes = {
 export type ModalSize = keyof typeof modalSizes;
 
 interface ModalViewProps extends HTMLAttributes<HTMLDivElement> {
-  isOpen: boolean;
   children: React.ReactNode;
   onClose?: () => void;
   title?: string;

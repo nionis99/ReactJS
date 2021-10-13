@@ -1,7 +1,9 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addMovie, editMovie } from 'actions/movieActions';
+import { Movie } from 'reducers/movieReducers/types';
 import Modal from 'containers/Modal';
 import MovieForm from 'components/MovieForm';
-import Movie from 'types/Movie';
 
 interface MovieModalProps {
   movie?: Movie;
@@ -11,9 +13,11 @@ interface MovieModalProps {
 }
 
 const MovieFormModal = ({ movie, isOpen, onClose, title }: MovieModalProps) => {
+  const dispatch = useDispatch();
+
   const onSubmit = () => {
-    if (movie) return alert('TODO: I will edit form');
-    return alert('TODO: I will submit form');
+    if (movie) return dispatch(editMovie({} as Movie));
+    return dispatch(addMovie({} as Movie));
   };
 
   const onReset = () => {
