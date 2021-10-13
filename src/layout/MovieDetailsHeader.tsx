@@ -27,7 +27,7 @@ const MovieDetailsHeader = ({ onSearchClick, movie, className = '', ...rest }: M
       </div>
       <div className="flex pt-6">
         <div className="w-1/3">
-          <img alt={title} src={poster_path} width={300} height={600} />
+          <img alt={title} src={poster_path} width={400} />
         </div>
         <div className="w-2/3 px-8">
           <p className="flex font-light">
