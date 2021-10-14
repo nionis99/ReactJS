@@ -33,6 +33,7 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
     formState: { errors },
     getValues,
   } = useForm<IMovieForm>({
+    mode: 'all',
     resolver: yupResolver(MovieFormSchema),
     defaultValues: { ...movie, runtime: movie?.runtime.toString(), vote_average: movie?.vote_average.toString() },
   });
@@ -125,67 +126,10 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
   );
 };
 
+// TODO: finish later on forms tasks
 const MovieFormSchema = Yup.object().shape({
   genres: Yup.array().min(1, 'Select at least one'),
+  title: Yup.string().required().max(40, 'Should be less then 40 characters'),
 });
 
 export default MovieForm;
-
-//import React from "react";
-// import { useForm, Controller } from "react-hook-form";
-// import FormControlLabel from "@material-ui/core/FormControlLabel";
-// import Checkbox from "@material-ui/core/Checkbox";
-// import * as Yup from "yup";
-// import { yupResolver } from "@hookform/resolvers";
-// import { FormHelperText, FormControl } from "@material-ui/core";
-//
-// const genres = ["Comedy", "Drama", "Action"];
-//
-// export const Schema = Yup.object().shape({
-//   genres: Yup.array().min(1, "Select at least one")
-// });
-//
-// export default function CheckboxesGroup() {
-//   const defaultGenres = ["Comedy"];
-//
-//   const { control, handleSubmit, getValues, errors } = useForm({
-//     resolver: yupResolver(Schema),
-//     defaultValues: { genres: defaultGenres }
-//   });
-//
-//   const handleCheck = genre => {
-//     const { genres } = getValues();
-//     const newGenres = genres?.includes(genre)
-//       ? genres?.filter(selectedGenre => selectedGenre !== genre)
-//       : [...(genres ?? []), genre];
-//     return newGenres;
-//   };
-//
-//   return (
-//     <form onSubmit={handleSubmit(data => console.log("data", data.genres))}>
-//       <FormControl error={!!errors.genres?.message}>
-//         <FormHelperText>{errors.genres?.message}</FormHelperText>
-//         <Controller
-//           name="genres"
-//           render={props =>
-//             genres.map((genre, index) => (
-//               <FormControlLabel
-//                 control={
-//                   <Checkbox
-//                     onChange={() => props.onChange(handleCheck(genre))}
-//                     defaultChecked={defaultGenres.includes(genre)}
-//                   />
-//                 }
-//                 key={index}
-//                 label={genre}
-//               />
-//             ))
-//           }
-//           control={control}
-//         />
-//       </FormControl>
-//       <pre>SELECTED: {JSON.stringify(getValues(), null, 2)}</pre>
-//       <button>Submit</button>
-//     </form>
-//   );
-// }

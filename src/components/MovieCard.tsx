@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import moment from 'moment';
 import DeleteConfirmation from 'components/Modals/DeleteConfirmation';
 import MovieFormModal from 'components/Modals/MovieFormModal';
+import { deleteMovie } from 'actions/movieActions';
 import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
-import moment from 'moment';
-import { deleteMovie } from '../actions/movieActions';
-import { useDispatch } from 'react-redux';
 
 interface MovieCardProps {
   movie: Movie;
