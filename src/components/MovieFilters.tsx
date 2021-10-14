@@ -1,14 +1,14 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useState } from 'react';
 import cx from 'classnames';
 import ArrowDown from 'assets/icons/arrowDown.svg';
 import { sortOptions } from '../../__mocks__/data';
 
 const defaultTabClassName =
-  'text-white p-5 cursor-pointer hover:text-primary focus:outline-none uppercase font-medium border-b-2';
+  'text-white p-1 md:p-5 cursor-pointer hover:text-primary focus:outline-none uppercase font-medium border-b-2';
 
 // TODO : Nav links || Filtering
 const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => (
-  <nav className={cx('flex flex-row', className)}>
+  <nav className={cx('flex flex-row overflow-auto', className)}>
     {/*Active*/}
     <span className={cx(defaultTabClassName, 'border-primary')}>All</span>
     <span className={defaultTabClassName}>Documentary</span>
@@ -16,11 +16,13 @@ const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => (
     <span className={defaultTabClassName}>Horror</span>
     <span className={defaultTabClassName}>Crime</span>
     <span className="cursor-default mx-auto w-full border-b-2" />
-    <span className="text-white p-5 uppercase font-normal border-b-2 text-opacity-50 whitespace-nowrap">Sort by</span>
-    <div className="relative w-full xl:w-1/3 md:2/3">
+    <span className="text-white p-1 md:p-5 uppercase font-normal border-b-2 text-opacity-50 whitespace-nowrap">
+      Sort by
+    </span>
+    <div className="relative w-96">
       <select
-        className="block appearance-none w-full bg-transparent text-white p-5 border-b-2 font-medium
-        focus:outline-none truncate"
+        className="appearance-none w-full bg-transparent text-white p-1 md:p-5 pr-4 border-b-2 font-medium
+          focus:outline-none truncate"
       >
         {sortOptions.map((sortOption, index) => (
           <option key={index}>{sortOption}</option>

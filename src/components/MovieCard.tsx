@@ -5,6 +5,8 @@ import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
 import moment from 'moment';
+import { deleteMovie } from '../actions/movieActions';
+import { useDispatch } from 'react-redux';
 
 interface MovieCardProps {
   movie: Movie;
@@ -12,6 +14,7 @@ interface MovieCardProps {
 }
 
 const MovieCard = ({ movie, onClick }: MovieCardProps) => {
+  const dispatch = useDispatch();
   const { poster_path, title, release_date, genres } = movie;
   const yearsOfTheMovie = moment(release_date).format('YYYY');
   const [isBlurred, setIsBlurred] = useState(false);
@@ -34,10 +37,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
     setIsDeletingMovie(true);
   };
 
-  const onDeleteMovieConfirmation = () => {
-    alert(`I will delete movie : ${movie.title}`);
-    setIsDeletingMovie(false);
-  };
+  const onDeleteMovieConfirmation = () => dispatch(deleteMovie(movie.id, setIsDeletingMovie));
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {
     event.stopPropagation();

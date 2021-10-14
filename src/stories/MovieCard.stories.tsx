@@ -1,8 +1,9 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Provider } from 'react-redux';
 import MovieCard from 'components/MovieCard';
 import movieImageSrc from 'assets/images/movie1.png';
+import store from 'store';
 
 export default {
   title: 'Components',
@@ -10,9 +11,11 @@ export default {
 } as ComponentMeta<typeof MovieCard>;
 
 const Template: ComponentStory<typeof MovieCard> = (args) => (
-  <div className="w-1/4">
-    <MovieCard {...args} />
-  </div>
+  <Provider store={store}>
+    <div className="w-1/4">
+      <MovieCard {...args} />
+    </div>
+  </Provider>
 );
 
 export const MovieItem = Template.bind({});

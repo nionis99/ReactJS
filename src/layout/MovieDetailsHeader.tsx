@@ -18,20 +18,20 @@ const MovieDetailsHeader = ({ onSearchClick, movie, className = '', ...rest }: M
   }, [movie]);
 
   return (
-    <header className={`flex-col bg-content py-5 px-16 text-white  ${className}`} {...rest}>
+    <header className={`flex-col bg-content py-2 md:py-5 px-4 md:px-16 text-white  ${className}`} {...rest}>
       <div className="flex w-full justify-between items-center">
         <span className="font-light text-primary">netflixroulette</span>
         <span className="ml-auto">
           <SearchButton className="cursor-pointer" onClick={onSearchClick} />
         </span>
       </div>
-      <div className="flex pt-6">
-        <div className="w-1/3">
-          <img alt={title} src={poster_path} width={400} />
+      <div className="flex flex-col md:flex-row md:justify-center pt-6">
+        <div className="flex w-full md:w-1/3 justify-center items-center h-auto">
+          <img alt={title} src={poster_path} width={400} height={200} />
         </div>
-        <div className="w-2/3 px-8">
-          <p className="flex font-light">
-            <span className="flex items-center justify-center text-4xl">{title}</span>
+        <div className="w-full md:w-2/3 px-8">
+          <p className="flex font-light justify-center md:justify-start pt-3 md:pt-0">
+            <span className="flex justify-center items-center text-4xl">{title}</span>
             <span
               className="flex ml-8 items-center justify-center p-3 h-14 w-14 rounded-full border-2 border-white
               text-2xl"
@@ -39,8 +39,10 @@ const MovieDetailsHeader = ({ onSearchClick, movie, className = '', ...rest }: M
               {vote_average}
             </span>
           </p>
-          <p className="text-white text-opacity-50">{genres.join(', ')}</p>
-          <p className="py-8 text-primary font-light text-2xl">
+          <p className="flex text-white text-opacity-50 justify-center md:justify-start pt-3 md:pt-0">
+            {genres.join(', ')}
+          </p>
+          <p className="flex py-8 text-primary font-light justify-center md:justify-start text-2xl">
             <span className="mr-8">{yearsOfTheMovie}</span>
             <span>{durationInHours}</span>
           </p>

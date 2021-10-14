@@ -18,6 +18,10 @@ body {
     width: 100%;
 }
 
+input[type="checked"] {
+    background-color: #F65261;
+}
+
 main {
     flex: 1
 }

@@ -81,7 +81,7 @@
     "postcss-import": "^14.0.2",
     "postcss-loader": "^6.1.1",
     "postcss-preset-env": "^6.7.0",
-    "react-hook-form": "^7.17.1",
+    "react-hook-form": "^7.17.4",
     "sass": "^1.39.0",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
@@ -94,6 +94,6 @@
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.1.1",
     "webpack-merge": "^5.8.0",
-    "yup": "^0.32.9"
+    "yup": "^0.32.11"
   }
 }

@@ -8,9 +8,9 @@ const buttonVariants = {
 };
 
 const buttonSizes = {
-  large: 'px-16 py-4',
-  medium: 'px-11 py-3',
-  small: 'px-4 py-2',
+  large: 'px-4 py-2 md:px-16 md:py-4',
+  medium: 'px-2 md:px-11 py-1 md:py-2.5',
+  small: 'px-1 py-0.5 md:px-4 md:py-1',
 };
 
 type ButtonVariant = keyof typeof buttonVariants;

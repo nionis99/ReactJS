@@ -47,9 +47,16 @@ export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = i
     case MoviesActions.FETCH_MOVIE_SUCCESS:
     case MoviesActions.ADD_MOVIE_SUCCESS:
     case MoviesActions.EDIT_MOVIE_SUCCESS:
-    case MoviesActions.DELETE_MOVIE_SUCCESS:
       return {
         ...state,
+        loading: false,
+      };
+    case MoviesActions.DELETE_MOVIE_SUCCESS:
+      action.payload;
+      return {
+        ...state,
+        data: state.data.filter((data) => data.id !== action.payload),
+        totalAmount: state.totalAmount - 1,
         loading: false,
       };
 
