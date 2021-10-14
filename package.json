@@ -8,6 +8,7 @@
     "build:dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config config/webpack.config.js",
     "build-storybook": "build-storybook",
+    "prepare": "husky install",
     "test": "jest"
   },
   "lint-staged": {
