@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import FormSelectInput from 'components/SelectInput';
+import FormSelectInput from 'components/GenresInput';
 
 const testOptions = ['Option1', 'Option2', 'Option3', '...'];
 

@@ -71,7 +71,7 @@ export const editMovie =
   };
 
 export const deleteMovie =
-  (deletedId: number, setIsDeletingMovie: (isDeleting: boolean) => void): ThunkResult<void> =>
+  (deletedId: number): ThunkResult<void> =>
   async (dispatch) => {
     dispatch({ type: MoviesActions.DELETE_MOVIE });
     try {
@@ -79,7 +79,5 @@ export const deleteMovie =
       dispatch({ type: MoviesActions.DELETE_MOVIE_SUCCESS, payload: deletedId });
     } catch (e) {
       dispatch({ type: MoviesActions.DELETE_MOVIE_FAIL });
-    } finally {
-      setIsDeletingMovie(false);
     }
   };

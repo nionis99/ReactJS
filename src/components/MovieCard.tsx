@@ -10,10 +10,12 @@ import XIcon from 'assets/icons/x.svg';
 
 interface MovieCardProps {
   movie: Movie;
+  selectedMovie?: Movie;
+  setSelectedMovie: (movie?: Movie) => void;
   onClick: () => void;
 }
 
-const MovieCard = ({ movie, onClick }: MovieCardProps) => {
+const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCardProps) => {
   const dispatch = useDispatch();
   const { poster_path, title, release_date, genres } = movie;
   const yearsOfTheMovie = moment(release_date).format('YYYY');
@@ -37,7 +39,11 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
     setIsDeletingMovie(true);
   };
 
-  const onDeleteMovieConfirmation = () => dispatch(deleteMovie(movie.id, setIsDeletingMovie));
+  const onDeleteMovieConfirmation = () => {
+    dispatch(deleteMovie(movie.id));
+    if (selectedMovie) setSelectedMovie(undefined);
+    setIsDeletingMovie(false);
+  };
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {
     event.stopPropagation();

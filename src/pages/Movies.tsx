@@ -30,7 +30,13 @@ const MoviesPage = () => {
       ) : (
         <SearchHeader openAddMovie={onOpenAddMovieForm} />
       )}
-      <Content onSelectedClick={setSelectedMovie} totalMovies={totalAmount} movies={movies} loading={loading} />
+      <Content
+        selectedMovie={selectedMovie}
+        setSelectedMovie={setSelectedMovie}
+        totalMovies={totalAmount}
+        movies={movies}
+        loading={loading}
+      />
       <Footer />
     </>
   );

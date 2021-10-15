@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
+import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Movie } from 'reducers/movieReducers/types';
+import GenresInput from 'components/GenresInput';
 import Input from 'components/Input';
-import SelectInput from 'components/SelectInput';
 import Button from 'components/Button';
 import { genres } from '../../__mocks__/data';
 
@@ -25,6 +25,13 @@ export interface IMovieForm {
 }
 
 const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
+  const defaultValues = {
+    ...movie,
+    genres: movie?.genres || [],
+    runtime: movie?.runtime.toString(),
+    vote_average: movie?.vote_average.toString(),
+  };
+
   const {
     control,
     register,
@@ -35,8 +42,14 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
   } = useForm<IMovieForm>({
     mode: 'all',
     resolver: yupResolver(MovieFormSchema),
-    defaultValues: { ...movie, runtime: movie?.runtime.toString(), vote_average: movie?.vote_average.toString() },
+    defaultValues,
   });
+
+  const [selectedGenres, setSelectedGenres] = useState<string[]>(getValues().genres || []);
+  const onReset = () => {
+    setSelectedGenres(movie?.genres || []);
+    reset(defaultValues);
+  };
 
   return (
     <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
@@ -84,11 +97,14 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
         />
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
-        <SelectInput
+        <GenresInput
           control={control}
+          selectedGenres={selectedGenres}
+          setSelectedGenres={setSelectedGenres}
           className="w-full sm:w-2/3 px-3 mb-6 md:mb-0"
           label="Genre"
           getValues={getValues}
+          errorMessage={(errors.genres as FieldError | undefined)?.message}
           options={genres}
         />
         <Input
@@ -105,31 +121,46 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3 mb-6 md:mb-0">
-          <label className="block uppercase tracking-wide text-xs font-bold mb-2 upper-case text-primary">
+          <label
+            className={`block uppercase tracking-wide text-xs font-bold mb-2 upper-case ${
+              errors.overview ? 'text-red-500' : 'text-primary'
+            }`}
+          >
             Overview
           </label>
           <textarea
             defaultValue={movie?.overview}
-            className="appearance-none w-full bg-gray80 border-gray80 text-white border rounded py-2 px-4 mb-3
-            leading-tight focus:outline-none focus:border-gray-200 resize-none"
+            className={`appearance-none w-full bg-gray80  ${
+              errors.overview ? 'border-red-500' : 'border-gray80'
+            } text-white border rounded py-2 px-4 mb-3
+            leading-tight focus:outline-none focus:border-gray-200 resize-none`}
             placeholder="Movie description"
             {...register('overview')}
             rows={6}
           />
+          {errors.overview && <p className="text-red-500 text-xs italic">{errors.overview.message}</p>}
         </div>
       </div>
       <div className="flex flex-row w-full">
-        <Button title="Reset" className="ml-auto mr-4" variant="outline-primary" size="medium" onClick={() => reset} />
-        <Button title={movie ? 'Edit' : 'Submit'} variant="primary" size="medium" type="submit" />
+        <Button
+          title="Reset"
+          className="ml-auto mr-4"
+          variant="outline-primary"
+          size="medium"
+          type="reset"
+          onClick={onReset}
+        />
+        <Button title={movie ? 'Edit' : 'Submit'} variant="primary" size="medium" />
       </div>
     </form>
   );
 };
 
-// TODO: finish later on forms tasks
 const MovieFormSchema = Yup.object().shape({
   genres: Yup.array().min(1, 'Select at least one'),
   title: Yup.string().required().max(40, 'Should be less then 40 characters'),
+  poster_path: Yup.string().required('Url to the poster image is required'),
+  runtime: Yup.number().typeError('runtime must be a number').positive('runtime must be greater than zero'),
+  overview: Yup.string().required(),
 });
-
 export default MovieForm;

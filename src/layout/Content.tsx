@@ -6,15 +6,17 @@ import { Movie } from 'reducers/movieReducers/types';
 
 interface MovieContentProps extends HTMLAttributes<HTMLDivElement> {
   movies: Movie[] | [];
+  selectedMovie?: Movie;
+  setSelectedMovie: (movie?: Movie) => void;
   totalMovies: number;
-  onSelectedClick: (movie?: Movie) => void;
   loading: boolean;
 }
 
 const Content = ({
   movies,
   totalMovies,
-  onSelectedClick,
+  selectedMovie,
+  setSelectedMovie,
   loading,
   className = '',
   ...restProps
@@ -33,7 +35,13 @@ const Content = ({
         </div>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6">
           {movies.map((movie, index) => (
-            <MovieCard key={index} movie={movie} onClick={() => onSelectedClick(movie)} />
+            <MovieCard
+              key={index}
+              movie={movie}
+              onClick={() => setSelectedMovie(movie)}
+              selectedMovie={selectedMovie}
+              setSelectedMovie={setSelectedMovie}
+            />
           ))}
         </div>
       </div>

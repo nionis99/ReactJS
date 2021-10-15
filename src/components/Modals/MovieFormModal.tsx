@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useForm } from 'react-hook-form';
 import { addMovie, editMovie } from 'actions/movieActions';
 import { Movie } from 'reducers/movieReducers/types';
 import MovieForm, { IMovieForm } from 'components/MovieForm';
@@ -18,9 +17,7 @@ const MovieFormModal = ({ movie, isOpen, onClose, title }: MovieModalProps) => {
 
   const onSubmit = (data: IMovieForm) => {
     const convertedData = { ...data, runtime: parseInt(data.runtime), vote_average: parseFloat(data.vote_average) };
-    console.log(convertedData);
-    // if (movie) return dispatch(editMovie({ ...convertedData, id: movie.id }));
-    // return dispatch(addMovie(convertedData));
+    return movie ? dispatch(editMovie({ ...convertedData, id: movie.id })) : dispatch(addMovie(convertedData));
   };
 
   return (

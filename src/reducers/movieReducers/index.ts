@@ -25,19 +25,19 @@ export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = i
   switch (action.type) {
     case MoviesActions.FETCH_MOVIE:
     case MoviesActions.FETCH_MOVIES:
-    case MoviesActions.ADD_MOVIE:
+    case MoviesActions.ADD_MOVIE: // TODO: SEPARATE LOADINGS, CAUSE UNMOUNTING CONTENT.
     case MoviesActions.EDIT_MOVIE:
     case MoviesActions.DELETE_MOVIE:
       return { ...state, loading: true };
 
     case MoviesActions.FETCH_MOVIE_FAIL:
     case MoviesActions.FETCH_MOVIES_FAIL:
-    case MoviesActions.ADD_MOVIE_FAIL:
+    case MoviesActions.ADD_MOVIE_FAIL: // TODO: SEPARATE ERRORS AND ADD THEIR MESSAGES.
     case MoviesActions.EDIT_MOVIE_FAIL:
     case MoviesActions.DELETE_MOVIE_FAIL:
       return { ...state, loading: false };
 
-    // TODO: Crud state changes for immutable data
+    // TODO: CRUD
     case MoviesActions.FETCH_MOVIES_SUCCESS:
       return {
         ...state,
@@ -47,6 +47,7 @@ export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = i
     case MoviesActions.FETCH_MOVIE_SUCCESS:
     case MoviesActions.ADD_MOVIE_SUCCESS:
     case MoviesActions.EDIT_MOVIE_SUCCESS:
+      state.data[state.data.findIndex((data) => data.id === action.payload.id)] = action.payload;
       return {
         ...state,
         loading: false,
