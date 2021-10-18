@@ -17,12 +17,12 @@ type ButtonVariant = keyof typeof buttonVariants;
 type ButtonSize = keyof typeof buttonSizes;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string;
+  buttonTitle: string | React.ReactNode;
   variant: ButtonVariant;
   size: ButtonSize;
 }
 
-const Button = ({ title, variant, size, className = '', ...rest }: ButtonProps) => (
+const Button = ({ buttonTitle, variant, size, className = '', ...rest }: ButtonProps) => (
   <button
     className={cx(
       'flex justify-center items-center rounded border p-2',
@@ -32,7 +32,7 @@ const Button = ({ title, variant, size, className = '', ...rest }: ButtonProps) 
     )}
     {...rest}
   >
-    {title}
+    {buttonTitle}
   </button>
 );
 

@@ -7,9 +7,11 @@ import GenresInput from 'components/GenresInput';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import { genres } from '../../__mocks__/data';
+import Loader from './Loader';
 
-interface MovieFormProps<T> {
-  movie?: T;
+interface MovieFormProps {
+  movie?: Movie;
+  isLoading: boolean;
   onSubmit: (data: IMovieForm) => void;
 }
 
@@ -24,12 +26,12 @@ export interface IMovieForm {
   overview: string;
 }
 
-const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
+const MovieForm = ({ movie, isLoading, onSubmit }: MovieFormProps) => {
   const defaultValues = {
     ...movie,
     genres: movie?.genres || [],
     runtime: movie?.runtime.toString(),
-    vote_average: movie?.vote_average.toString(),
+    vote_average: movie?.vote_average?.toString(),
   };
 
   const {
@@ -37,7 +39,7 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors: formErrors },
     getValues,
   } = useForm<IMovieForm>({
     mode: 'all',
@@ -61,7 +63,7 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
           register={{ ...register('title') }}
           placeholder="Movie title"
           defaultValue={movie ? movie.title : ''}
-          errorMessage={errors.title?.message}
+          errorMessage={formErrors.title?.message}
         />
         <Input
           className="w-full sm:w-1/3 px-3"
@@ -70,7 +72,7 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
           register={{ ...register('release_date') }}
           placeholder="Select Date"
           defaultValue={movie?.release_date}
-          errorMessage={errors.release_date?.message}
+          errorMessage={formErrors.release_date?.message}
         />
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
@@ -81,7 +83,7 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
           register={{ ...register('poster_path') }}
           placeholder="https://"
           defaultValue={movie?.poster_path}
-          errorMessage={errors.poster_path?.message}
+          errorMessage={formErrors.poster_path?.message}
         />
         <Input
           className="w-full sm:w-1/3 px-3"
@@ -93,7 +95,7 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
           step="0.1"
           placeholder="7.8"
           defaultValue={movie?.vote_average}
-          errorMessage={errors.vote_average?.message}
+          errorMessage={formErrors.vote_average?.message}
         />
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
@@ -104,7 +106,7 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
           className="w-full sm:w-2/3 px-3 mb-6 md:mb-0"
           label="Genre"
           getValues={getValues}
-          errorMessage={(errors.genres as FieldError | undefined)?.message}
+          errorMessage={(formErrors.genres as FieldError | undefined)?.message}
           options={genres}
         />
         <Input
@@ -116,14 +118,14 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
           step="1"
           min="1"
           defaultValue={movie?.runtime}
-          errorMessage={errors.runtime?.message}
+          errorMessage={formErrors.runtime?.message}
         />
       </div>
       <div className="flex flex-wrap -mx-3 mb-4">
         <div className="w-full px-3 mb-6 md:mb-0">
           <label
             className={`block uppercase tracking-wide text-xs font-bold mb-2 upper-case ${
-              errors.overview ? 'text-red-500' : 'text-primary'
+              formErrors.overview ? 'text-red-500' : 'text-primary'
             }`}
           >
             Overview
@@ -131,36 +133,44 @@ const MovieForm = ({ movie, onSubmit }: MovieFormProps<Movie>) => {
           <textarea
             defaultValue={movie?.overview}
             className={`appearance-none w-full bg-gray80  ${
-              errors.overview ? 'border-red-500' : 'border-gray80'
+              formErrors.overview ? 'border-red-500' : 'border-gray80'
             } text-white border rounded py-2 px-4 mb-3
             leading-tight focus:outline-none focus:border-gray-200 resize-none`}
             placeholder="Movie description"
             {...register('overview')}
             rows={6}
           />
-          {errors.overview && <p className="text-red-500 text-xs italic">{errors.overview.message}</p>}
+          {formErrors.overview && <p className="text-red-500 text-xs italic">{formErrors.overview.message}</p>}
         </div>
       </div>
       <div className="flex flex-row w-full">
         <Button
-          title="Reset"
+          buttonTitle="Reset"
           className="ml-auto mr-4"
           variant="outline-primary"
           size="medium"
           type="reset"
           onClick={onReset}
         />
-        <Button title={movie ? 'Edit' : 'Submit'} variant="primary" size="medium" />
+        <Button
+          buttonTitle={isLoading ? <Loader className="w-6 h-6" /> : movie ? 'Edit' : 'Submit'}
+          variant="primary"
+          size="medium"
+        />
       </div>
     </form>
   );
 };
 
 const MovieFormSchema = Yup.object().shape({
-  genres: Yup.array().min(1, 'Select at least one'),
-  title: Yup.string().required().max(40, 'Should be less then 40 characters'),
-  poster_path: Yup.string().required('Url to the poster image is required'),
+  genres: Yup.array().min(1, 'select at least one'),
+  title: Yup.string().required().max(40, 'should be less then 40 characters'),
+  poster_path: Yup.string().url('movie poster must be a valid URL').required('URL to the poster image is required'),
   runtime: Yup.number().typeError('runtime must be a number').positive('runtime must be greater than zero'),
+  rating: Yup.number()
+    .typeError('rating must be a number')
+    .positive('rating must be greater than zero')
+    .max(10, 'rating can not exceed 10'),
   overview: Yup.string().required(),
 });
 export default MovieForm;

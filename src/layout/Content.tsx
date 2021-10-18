@@ -9,7 +9,7 @@ interface MovieContentProps extends HTMLAttributes<HTMLDivElement> {
   selectedMovie?: Movie;
   setSelectedMovie: (movie?: Movie) => void;
   totalMovies: number;
-  loading: boolean;
+  getMoviesLoading: boolean;
 }
 
 const Content = ({
@@ -17,7 +17,7 @@ const Content = ({
   totalMovies,
   selectedMovie,
   setSelectedMovie,
-  loading,
+  getMoviesLoading,
   className = '',
   ...restProps
 }: MovieContentProps) => (
@@ -25,8 +25,8 @@ const Content = ({
     className={`flex-grow items-center justify-center bg-content px-4 md:px-16 text-white mt-2.5 ${className}`}
     {...restProps}
   >
-    {loading ? (
-      <Loader />
+    {getMoviesLoading ? (
+      <Loader className="w-30 h-30" />
     ) : (
       <div className="flex-col">
         <NavigationTabs />

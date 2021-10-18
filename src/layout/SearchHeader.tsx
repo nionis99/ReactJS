@@ -18,7 +18,7 @@ const SearchHeader = ({ openAddMovie, className = '', ...rest }: SearchHeaderPro
     <header className={`flex-col h-96 bg-header py-5 px-4 md:px-16 text-white bg-cover ${className}`} {...rest}>
       <div className="flex w-full justify-between items-start">
         <AppLogo />
-        <Button title="+ ADD MOVIE" variant="secondary" size="small" onClick={openAddMovie} />
+        <Button buttonTitle="+ ADD MOVIE" variant="secondary" size="small" onClick={openAddMovie} />
       </div>
       <div className="flex-col m-2 md:mx-16 md:my-11">
         <label className="flex text-2xl md:text-5xl">FIND YOUR MOVIE</label>
@@ -31,7 +31,7 @@ const SearchHeader = ({ openAddMovie, className = '', ...rest }: SearchHeaderPro
           />
           <Button
             className="flex ml-2 uppercase"
-            title="Search"
+            buttonTitle="Search"
             variant="primary"
             type="submit"
             size="large"

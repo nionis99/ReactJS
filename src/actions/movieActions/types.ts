@@ -12,6 +12,7 @@ interface FetchMoviesSuccess {
 
 interface FetchMoviesFail {
   type: MoviesActions.FETCH_MOVIES_FAIL;
+  error: string[];
 }
 
 interface FetchMovie {
@@ -25,6 +26,7 @@ interface FetchMovieSuccess {
 
 interface FetchMovieFail {
   type: MoviesActions.FETCH_MOVIE_FAIL;
+  error: string[];
 }
 
 interface AddMovie {
@@ -38,6 +40,7 @@ interface AddMovieSuccess {
 
 interface AddMovieFail {
   type: MoviesActions.ADD_MOVIE_FAIL;
+  error: string[];
 }
 
 interface DeleteMovie {
@@ -51,6 +54,7 @@ interface DeleteMovieSuccess {
 
 interface DeleteMovieFail {
   type: MoviesActions.DELETE_MOVIE_FAIL;
+  error: string[];
 }
 
 interface EditMovie {
@@ -64,6 +68,7 @@ interface EditMovieSuccess {
 
 interface EditMovieFail {
   type: MoviesActions.EDIT_MOVIE_FAIL;
+  error: string[];
 }
 
 export type MovieActionsTypes =

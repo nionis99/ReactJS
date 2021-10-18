@@ -7,6 +7,7 @@ import { deleteMovie } from 'actions/movieActions';
 import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
+import useStateSelector from '../hooks/useStateSelector';
 
 interface MovieCardProps {
   movie: Movie;
@@ -16,13 +17,14 @@ interface MovieCardProps {
 }
 
 const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCardProps) => {
-  const dispatch = useDispatch();
+  const { deleteMovieLoading } = useStateSelector((state) => state.movies);
   const { poster_path, title, release_date, genres } = movie;
   const yearsOfTheMovie = moment(release_date).format('YYYY');
   const [isBlurred, setIsBlurred] = useState(false);
   const [hasMoreActionSelected, setHasMoreActionSelected] = useState(false);
   const [isDeletingMovie, setIsDeletingMovie] = useState(false);
   const [editingMovie, setEditingMovie] = useState<Movie | undefined>();
+  const dispatch = useDispatch();
 
   const onCardMouseLeave = () => {
     if (hasMoreActionSelected) setHasMoreActionSelected(false);
@@ -40,9 +42,8 @@ const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCar
   };
 
   const onDeleteMovieConfirmation = () => {
-    dispatch(deleteMovie(movie.id));
+    dispatch(deleteMovie(movie.id, () => setIsDeletingMovie(false)));
     if (selectedMovie) setSelectedMovie(undefined);
-    setIsDeletingMovie(false);
   };
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {
@@ -104,6 +105,7 @@ const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCar
         isOpen={isDeletingMovie}
         title="Delete movie"
         description="Are you sure you want to delete this movie?"
+        isLoading={deleteMovieLoading}
         onConfirm={onDeleteMovieConfirmation}
         onClose={() => setIsDeletingMovie(false)}
       />

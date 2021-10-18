@@ -6,7 +6,7 @@ interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
 
 const Loader = ({ className, ...rest }: LoaderProps) => (
   <div className="flex flex-grow h-full justify-center items-center" {...rest}>
-    <div className={`animate-spin rounded-full h-32 w-32 border-b-2 border-white ${className}`} />
+    <div className={`animate-spin rounded-full border-b-2 border-white ${className}`} />
   </div>
 );
 
