@@ -26,7 +26,7 @@ const Content = ({
     {...restProps}
   >
     {getMoviesLoading ? (
-      <Loader className="w-30 h-30" />
+      <Loader className="w-32 h-32" />
     ) : (
       <div className="flex-col">
         <NavigationTabs />

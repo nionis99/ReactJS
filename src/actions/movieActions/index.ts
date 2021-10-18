@@ -23,17 +23,22 @@ export enum MoviesActions {
   DELETE_MOVIE_FAIL = 'DELETE_MOVIE_FAIL',
 }
 
-export const fetchMovies = (): ThunkResult<void> => async (dispatch) => {
-  dispatch({ type: MoviesActions.FETCH_MOVIES });
-  return api
-    .get<Movies>('/movies')
-    .then(({ data }) => dispatch({ type: MoviesActions.FETCH_MOVIES_SUCCESS, payload: data }))
-    .catch(({ response: { data } }) => dispatch({ type: MoviesActions.FETCH_MOVIES_FAIL, error: data.messages }));
-};
+export const fetchMovies =
+  (sortBy: string | null, filter: string | null): ThunkResult<void> =>
+  (dispatch) => {
+    console.log({ filter });
+    const query = `?sortBy=${sortBy || 'genres'}&sortOrder=desc&${filter ? '&filter=' + filter : ''}`;
+    console.log(query);
+    dispatch({ type: MoviesActions.FETCH_MOVIES });
+    return api
+      .get<Movies>(`/movies${query}`)
+      .then(({ data }) => dispatch({ type: MoviesActions.FETCH_MOVIES_SUCCESS, payload: data }))
+      .catch(({ response: { data } }) => dispatch({ type: MoviesActions.FETCH_MOVIES_FAIL, error: data.messages }));
+  };
 
 export const fetchMovie =
   (id: number): ThunkResult<void> =>
-  async (dispatch) => {
+  (dispatch) => {
     dispatch({ type: MoviesActions.FETCH_MOVIE });
     return api
       .get<Movie>(`/movies/${id}`)
@@ -48,7 +53,7 @@ export const fetchMovie =
 
 export const addMovie =
   (movie: Movie, closeModal: () => void): ThunkResult<void> =>
-  async (dispatch) => {
+  (dispatch) => {
     dispatch({ type: MoviesActions.ADD_MOVIE });
     return api
       .post<Movie>(`/movies`, movie)
@@ -61,7 +66,7 @@ export const addMovie =
 
 export const editMovie =
   (editedMovie: Movie, closeModal: () => void): ThunkResult<void> =>
-  async (dispatch) => {
+  (dispatch) => {
     dispatch({ type: MoviesActions.EDIT_MOVIE });
     return api
       .put<Movie>(`/movies`, editedMovie)
@@ -74,7 +79,7 @@ export const editMovie =
 
 export const deleteMovie =
   (deletedId: number, closeModal: () => void): ThunkResult<void> =>
-  async (dispatch) => {
+  (dispatch) => {
     dispatch({ type: MoviesActions.DELETE_MOVIE });
     return api
       .delete(`/movies/${deletedId}`)

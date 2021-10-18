@@ -4,10 +4,10 @@ import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Movie } from 'reducers/movieReducers/types';
 import GenresInput from 'components/GenresInput';
+import Loader from 'components/Loader';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import { genres } from '../../__mocks__/data';
-import Loader from './Loader';
 
 interface MovieFormProps {
   movie?: Movie;

@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
+import useStateSelector from 'hooks/useStateSelector';
 import DeleteConfirmation from 'components/Modals/DeleteConfirmation';
 import MovieFormModal from 'components/Modals/MovieFormModal';
 import { deleteMovie } from 'actions/movieActions';
 import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
-import useStateSelector from '../hooks/useStateSelector';
+import NotFoundImage from 'assets/images/image-not-found-big.png';
 
 interface MovieCardProps {
   movie: Movie;
@@ -85,7 +86,7 @@ const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCar
               )}
             </>
           )}
-          <img src={poster_path} alt={title} />
+          <img src={poster_path} alt={title} onError={(event) => (event.currentTarget.src = NotFoundImage)} />
         </div>
         <p className="flex w-full">
           <span className="font-bold">{title}</span>

@@ -1,7 +1,8 @@
 import React, { HTMLAttributes, useEffect } from 'react';
-import SearchButton from 'assets/icons/searchButton.svg';
-import { Movie } from 'reducers/movieReducers/types';
 import moment from 'moment';
+import SearchButton from 'assets/icons/searchButton.svg';
+import NotFoundImage from 'assets/images/image-not-found-big.png';
+import { Movie } from 'reducers/movieReducers/types';
 
 interface MovieDetailsHeaderProps extends HTMLAttributes<HTMLDivElement> {
   onSearchClick: () => void;
@@ -27,7 +28,13 @@ const MovieDetailsHeader = ({ onSearchClick, movie, className = '', ...rest }: M
       </div>
       <div className="flex flex-col md:flex-row md:justify-center pt-6">
         <div className="flex w-full md:w-1/3 justify-center items-center h-auto">
-          <img alt={title} src={poster_path} width={400} height={200} />
+          <img
+            alt={title}
+            src={poster_path}
+            width={400}
+            height={200}
+            onError={(event) => (event.currentTarget.src = NotFoundImage)}
+          />
         </div>
         <div className="w-full md:w-2/3 px-8">
           <p className="flex font-light justify-center md:justify-start pt-3 md:pt-0">

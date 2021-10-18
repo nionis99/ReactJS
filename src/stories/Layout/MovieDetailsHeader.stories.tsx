@@ -14,12 +14,12 @@ const Template: ComponentStory<typeof HeaderWithDetails> = (args) => <HeaderWith
 export const MovieDetailsHeader = Template.bind({});
 MovieDetailsHeader.args = {
   movie: {
-    id: 10,
+    id: 0,
     poster_path: movieImageSrc,
     title: 'Kill Bill 2',
     genres: ['Action', 'Adventure'],
-    release_date: '2004',
-    runtime: 200,
+    release_date: '1994-04-03',
+    runtime: 120,
     vote_average: 7.8,
     overview: 'This movie is just for test purpose',
   },
