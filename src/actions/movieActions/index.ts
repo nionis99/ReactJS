@@ -24,9 +24,10 @@ export enum MoviesActions {
 }
 
 export const fetchMovies =
-  (sortBy: string | null, filter: string | null): ThunkResult<void> =>
+  (sortBy: string | null, filter: string | null, searchValue: string): ThunkResult<void> =>
   (dispatch) => {
-    const query = `?sortBy=${sortBy || 'genres'}&sortOrder=desc&${filter ? '&filter=' + filter : ''}`;
+    const query = `?sortBy=${sortBy || 'genres'}&sortOrder=desc&search=${searchValue}&searchBy=title
+    ${filter ? '&filter=' + filter : ''}`;
     dispatch({ type: MoviesActions.FETCH_MOVIES });
     return api
       .get<Movies>(`/movies${query}`)

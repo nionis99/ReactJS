@@ -9,10 +9,16 @@ import MovieDetailsHeader from 'layout/MovieDetailsHeader';
 import MovieFormModal from 'components/Modals/MovieFormModal';
 import Footer from 'layout/Footer';
 import { Movie } from 'reducers/movieReducers/types';
+import { useParams } from 'react-router-dom';
+
+interface MoviePageParamsProps {
+  searchValue?: string;
+}
 
 const MoviesPage = () => {
   const dispatch = useDispatch();
   const { sortBy, filter } = useMoviePageContext();
+  const { searchValue = '' } = useParams<MoviePageParamsProps>();
   const { totalAmount, getMoviesLoading, data: movies, getMoviesError } = useStateSelector((state) => state.movies);
   const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>();
   const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
@@ -21,8 +27,8 @@ const MoviesPage = () => {
   const onCloseAddMovieForm = () => setIsMovieFormOpen(false);
 
   useEffect(() => {
-    dispatch(fetchMovies(sortBy, filter));
-  }, [dispatch, sortBy, filter]);
+    dispatch(fetchMovies(sortBy, filter, searchValue));
+  }, [dispatch, sortBy, filter, searchValue]);
 
   return (
     <>
@@ -30,7 +36,7 @@ const MoviesPage = () => {
       {selectedMovie ? (
         <MovieDetailsHeader movie={selectedMovie} onSearchClick={onSearchIconClick} />
       ) : (
-        <SearchHeader openAddMovie={onOpenAddMovieForm} />
+        <SearchHeader openAddMovie={onOpenAddMovieForm} defaultSearchValue={searchValue} />
       )}
       <Content
         selectedMovie={selectedMovie}

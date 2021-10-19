@@ -1,17 +1,20 @@
 import React, { HTMLAttributes, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import AppLogo from 'components/Logo';
 import Button from 'components/Button';
 
 interface SearchHeaderProps extends HTMLAttributes<HTMLDivElement> {
+  defaultSearchValue: string;
   openAddMovie: () => void;
 }
 
-const SearchHeader = ({ openAddMovie, className = '', ...rest }: SearchHeaderProps) => {
-  const [searchValue, setSearchValue] = useState('');
+const SearchHeader = ({ defaultSearchValue, openAddMovie, className = '', ...rest }: SearchHeaderProps) => {
+  const { replace } = useHistory();
+  const [searchValue, setSearchValue] = useState(defaultSearchValue);
 
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (searchValue) alert(`Looking for: ${searchValue}`);
+    return searchValue ? replace(`/search/${searchValue}`) : replace('/search');
   };
 
   return (
@@ -28,6 +31,7 @@ const SearchHeader = ({ openAddMovie, className = '', ...rest }: SearchHeaderPro
             name="search"
             onInput={(e) => setSearchValue(e.currentTarget.value)}
             placeholder="What do you want to watch?"
+            defaultValue={defaultSearchValue}
           />
           <Button
             className="flex ml-2 uppercase"

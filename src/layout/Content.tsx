@@ -1,8 +1,7 @@
 import React, { HTMLAttributes } from 'react';
+import { Movie } from 'reducers/movieReducers/types';
 import MovieCard from 'components/MovieCard';
 import NavigationTabs from 'components/MovieFilters';
-import Loader from 'components/Loader';
-import { Movie } from 'reducers/movieReducers/types';
 
 interface MovieContentProps extends HTMLAttributes<HTMLDivElement> {
   movies: Movie[] | [];
@@ -20,28 +19,29 @@ const Content = ({
   setSelectedMovie,
   getMoviesLoading,
   getMoviesError,
-  className = '',
   ...restProps
-}: MovieContentProps) => {
-  const renderContent = () => {
-    if (getMoviesLoading) return <Loader className="w-32 h-32" />;
-    if (getMoviesError)
-      return getMoviesError.map((error, index) => (
-        <p key={index} className="text-red-500 text-xs italic">
-          {error}
-        </p>
-      ));
-
-    return (
-      <div className="flex-col">
-        <NavigationTabs />
-        <div className="py-4">
-          <span className="font-bold">{totalMovies}</span> <span>movies found</span>
-        </div>
+}: MovieContentProps) => (
+  <div className="flex-grow items-center justify-center bg-content px-4 md:px-16 text-white mt-2.5" {...restProps}>
+    <div className="flex-col items-center justify-center">
+      <NavigationTabs />
+      <div className="flex flex-row py-4">
+        <span className="font-bold mr-2">{totalMovies}</span>
+        <span>movies found</span>
+        {getMoviesLoading && (
+          <div className="ml-auto self-center animate-spin rounded-full border-b-2 border-white w-4 h-4" />
+        )}
+      </div>
+      {getMoviesError.length > 0 ? (
+        getMoviesError.map((error, index) => (
+          <p key={index} className="text-red-500 text-xs italic">
+            {error}
+          </p>
+        ))
+      ) : (
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6">
-          {movies.map((movie, index) => (
+          {movies.map((movie) => (
             <MovieCard
-              key={index}
+              key={movie.id}
               movie={movie}
               onClick={() => setSelectedMovie(movie)}
               selectedMovie={selectedMovie}
@@ -49,18 +49,9 @@ const Content = ({
             />
           ))}
         </div>
-      </div>
-    );
-  };
-
-  return (
-    <div
-      className={`flex-grow items-center justify-center bg-content px-4 md:px-16 text-white mt-2.5 ${className}`}
-      {...restProps}
-    >
-      {renderContent()}
+      )}
     </div>
-  );
-};
+  </div>
+);
 
 export default Content;
