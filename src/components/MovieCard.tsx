@@ -8,7 +8,7 @@ import { deleteMovie } from 'actions/movieActions';
 import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
-import NotFoundImage from 'assets/images/image-not-found-big.png';
+import NotFoundImage from 'assets/images/not_found.png';
 
 interface MovieCardProps {
   movie: Movie;

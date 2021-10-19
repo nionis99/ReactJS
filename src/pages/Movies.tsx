@@ -13,7 +13,7 @@ import { Movie } from 'reducers/movieReducers/types';
 const MoviesPage = () => {
   const dispatch = useDispatch();
   const { sortBy, filter } = useMoviePageContext();
-  const { totalAmount, getMoviesLoading, data: movies } = useStateSelector((state) => state.movies);
+  const { totalAmount, getMoviesLoading, data: movies, getMoviesError } = useStateSelector((state) => state.movies);
   const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>();
   const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
   const onSearchIconClick = () => setSelectedMovie(undefined);
@@ -37,6 +37,7 @@ const MoviesPage = () => {
         setSelectedMovie={setSelectedMovie}
         totalMovies={totalAmount}
         getMoviesLoading={getMoviesLoading}
+        getMoviesError={getMoviesError}
         movies={movies}
       />
       <Footer />

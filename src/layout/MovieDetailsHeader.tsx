@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useEffect } from 'react';
 import moment from 'moment';
 import SearchButton from 'assets/icons/searchButton.svg';
-import NotFoundImage from 'assets/images/image-not-found-big.png';
+import NotFoundImage from 'assets/images/not_found.png';
 import { Movie } from 'reducers/movieReducers/types';
 
 interface MovieDetailsHeaderProps extends HTMLAttributes<HTMLDivElement> {

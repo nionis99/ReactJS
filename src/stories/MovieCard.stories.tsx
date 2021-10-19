@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Provider } from 'react-redux';
 import MovieCard from 'components/MovieCard';
-import movieImageSrc from 'assets/images/movie1.png';
+import movieImageSrc from 'assets/images/not_found.png';
 import store from 'store';
 
 export default {

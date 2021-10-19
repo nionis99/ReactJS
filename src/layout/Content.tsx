@@ -10,6 +10,7 @@ interface MovieContentProps extends HTMLAttributes<HTMLDivElement> {
   setSelectedMovie: (movie?: Movie) => void;
   totalMovies: number;
   getMoviesLoading: boolean;
+  getMoviesError: string[] | [];
 }
 
 const Content = ({
@@ -18,16 +19,20 @@ const Content = ({
   selectedMovie,
   setSelectedMovie,
   getMoviesLoading,
+  getMoviesError,
   className = '',
   ...restProps
-}: MovieContentProps) => (
-  <div
-    className={`flex-grow items-center justify-center bg-content px-4 md:px-16 text-white mt-2.5 ${className}`}
-    {...restProps}
-  >
-    {getMoviesLoading ? (
-      <Loader className="w-32 h-32" />
-    ) : (
+}: MovieContentProps) => {
+  const renderContent = () => {
+    if (getMoviesLoading) return <Loader className="w-32 h-32" />;
+    if (getMoviesError)
+      return getMoviesError.map((error, index) => (
+        <p key={index} className="text-red-500 text-xs italic">
+          {error}
+        </p>
+      ));
+
+    return (
       <div className="flex-col">
         <NavigationTabs />
         <div className="py-4">
@@ -45,9 +50,17 @@ const Content = ({
           ))}
         </div>
       </div>
-      // TODO : Pagination
-    )}
-  </div>
-);
+    );
+  };
+
+  return (
+    <div
+      className={`flex-grow items-center justify-center bg-content px-4 md:px-16 text-white mt-2.5 ${className}`}
+      {...restProps}
+    >
+      {renderContent()}
+    </div>
+  );
+};
 
 export default Content;

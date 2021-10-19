@@ -11,7 +11,7 @@ interface MoviePageContextType {
 export const MoviePageContext = createContext<MoviePageContextType | null>(null);
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactNode | JSX.Element;
 }
 
 export function MoviePageProvider({ children }: Props) {

@@ -5,7 +5,7 @@ import { IMovieForm } from 'components/MovieForm';
 import cx from 'classnames';
 
 interface SelectInputProps {
-  control: Control<IMovieForm>;
+  control?: Control<IMovieForm>;
   selectedGenres: string[] | [];
   setSelectedGenres: (genres: string[] | []) => void;
   label: string;
@@ -72,7 +72,7 @@ const GenresInput = ({
           onClick={toggleGenreSelection}
         >
           <span className="flex items-center justify-start select-none">
-            {selectedGenres.length > 0 ? selectedGenres.join(', ') : 'Select genre'}
+            {selectedGenres?.length > 0 ? selectedGenres.join(', ') : 'Select genre'}
           </span>
           <div className="flex ml-auto items-center">
             <ArrowDown

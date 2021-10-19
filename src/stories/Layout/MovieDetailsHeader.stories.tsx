@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import HeaderWithDetails from 'layout/MovieDetailsHeader';
-import movieImageSrc from 'assets/images/movie1.png';
+import movieImageSrc from 'assets/images/not_found.png';
 
 export default {
   title: 'Components/Layout',

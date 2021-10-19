@@ -31,7 +31,10 @@ export const fetchMovies =
     return api
       .get<Movies>(`/movies${query}`)
       .then(({ data }) => dispatch({ type: MoviesActions.FETCH_MOVIES_SUCCESS, payload: data }))
-      .catch(({ response: { data } }) => dispatch({ type: MoviesActions.FETCH_MOVIES_FAIL, error: data.messages }));
+      .catch((error) => {
+        const errorMessage: string[] = error.response ? error.response.data.messages : [error.message];
+        dispatch({ type: MoviesActions.FETCH_MOVIES_FAIL, error: errorMessage });
+      });
   };
 
 export const fetchMovie =
@@ -46,7 +49,10 @@ export const fetchMovie =
           payload: data,
         }),
       )
-      .catch(({ response: { data } }) => dispatch({ type: MoviesActions.FETCH_MOVIE_FAIL, error: data.messages }));
+      .catch((error) => {
+        const errorMessage: string[] = error.response ? error.response.data.messages : [error.message];
+        dispatch({ type: MoviesActions.FETCH_MOVIE_FAIL, error: errorMessage });
+      });
   };
 
 export const addMovie =
@@ -59,7 +65,10 @@ export const addMovie =
         dispatch({ type: MoviesActions.ADD_MOVIE_SUCCESS, payload: data });
         closeModal();
       })
-      .catch(({ response: { data } }) => dispatch({ type: MoviesActions.ADD_MOVIE_FAIL, error: data.messages }));
+      .catch((error) => {
+        const errorMessage: string[] = error.response ? error.response.data.messages : [error.message];
+        dispatch({ type: MoviesActions.ADD_MOVIE_FAIL, error: errorMessage });
+      });
   };
 
 export const editMovie =
@@ -72,7 +81,10 @@ export const editMovie =
         dispatch({ type: MoviesActions.EDIT_MOVIE_SUCCESS, payload: data });
         closeModal();
       })
-      .catch(({ response: { data } }) => dispatch({ type: MoviesActions.EDIT_MOVIE_FAIL, error: data.messages }));
+      .catch((error) => {
+        const errorMessage: string[] = error.response ? error.response.data.messages : [error.message];
+        dispatch({ type: MoviesActions.EDIT_MOVIE_FAIL, error: errorMessage });
+      });
   };
 
 export const deleteMovie =
@@ -85,5 +97,8 @@ export const deleteMovie =
         dispatch({ type: MoviesActions.DELETE_MOVIE_SUCCESS, payload: deletedId });
         closeModal();
       })
-      .catch(({ response: { data } }) => dispatch({ type: MoviesActions.DELETE_MOVIE_FAIL, error: data.messages }));
+      .catch((error) => {
+        const errorMessage: string[] = error.response ? error.response.data.messages : [error.message];
+        dispatch({ type: MoviesActions.DELETE_MOVIE_FAIL, error: errorMessage });
+      });
   };
