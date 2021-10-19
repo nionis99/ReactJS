@@ -9,7 +9,6 @@ const defaultTabClassName =
 
 const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => {
   const { setFilter, setSortBy, sortBy, filter } = useMoviePageContext();
-  console.log(filter, sortBy);
   const onSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
   };
