@@ -85,6 +85,7 @@ export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = i
       return {
         ...state,
         data: state.data.map((data) => (data.id !== action.payload.id ? data : action.payload)),
+        movie: state.movie?.id === action.payload.id ? action.payload : state.movie,
         editMovieLoading: false,
       };
     case MoviesActions.DELETE_MOVIE_SUCCESS:
