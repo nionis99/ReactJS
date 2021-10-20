@@ -12,12 +12,10 @@ import NotFoundImage from 'assets/images/not_found.png';
 
 interface MovieCardProps {
   movie: Movie;
-  selectedMovie?: Movie;
-  setSelectedMovie: (movie?: Movie) => void;
   onClick: () => void;
 }
 
-const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCardProps) => {
+const MovieCard = ({ movie, onClick }: MovieCardProps) => {
   const { deleteMovieLoading } = useStateSelector((state) => state.movies);
   const { poster_path, title, release_date, genres } = movie;
   const yearsOfTheMovie = moment(release_date).format('YYYY');
@@ -44,7 +42,6 @@ const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCar
 
   const onDeleteMovieConfirmation = () => {
     dispatch(deleteMovie(movie.id, () => setIsDeletingMovie(false)));
-    if (selectedMovie) setSelectedMovie(undefined);
   };
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {

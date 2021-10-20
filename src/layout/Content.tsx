@@ -5,20 +5,18 @@ import NavigationTabs from 'components/MovieFilters';
 
 interface MovieContentProps extends HTMLAttributes<HTMLDivElement> {
   movies: Movie[] | [];
-  selectedMovie?: Movie;
-  setSelectedMovie: (movie?: Movie) => void;
   totalMovies: number;
   getMoviesLoading: boolean;
   getMoviesError: string[] | [];
+  onMovieClick: (movieId: string) => void;
 }
 
 const Content = ({
   movies,
   totalMovies,
-  selectedMovie,
-  setSelectedMovie,
   getMoviesLoading,
   getMoviesError,
+  onMovieClick,
   ...restProps
 }: MovieContentProps) => (
   <div className="flex-grow items-center justify-center bg-content px-4 md:px-16 text-white mt-2.5" {...restProps}>
@@ -40,13 +38,7 @@ const Content = ({
       ) : (
         <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6">
           {movies.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              onClick={() => setSelectedMovie(movie)}
-              selectedMovie={selectedMovie}
-              setSelectedMovie={setSelectedMovie}
-            />
+            <MovieCard key={movie.id} movie={movie} onClick={() => onMovieClick(movie.id.toString())} />
           ))}
         </div>
       )}

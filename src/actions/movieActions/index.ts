@@ -39,7 +39,7 @@ export const fetchMovies =
   };
 
 export const fetchMovie =
-  (id: number): ThunkResult<void> =>
+  (id: string): ThunkResult<void> =>
   (dispatch) => {
     dispatch({ type: MoviesActions.FETCH_MOVIE });
     return api

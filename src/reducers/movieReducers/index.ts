@@ -4,6 +4,7 @@ import { MovieActionsTypes } from 'actions/movieActions/types';
 import { Movie } from './types';
 
 export interface MoviesState {
+  movie: Movie | null;
   data: Movie[] | [];
   totalAmount: number;
   offset: number;
@@ -22,6 +23,7 @@ export interface MoviesState {
 
 const initialState = {
   data: [],
+  movie: null,
   totalAmount: 0,
   offset: 0,
   limit: 0,
@@ -69,6 +71,7 @@ export const moviesReducer: Reducer<MoviesState, MovieActionsTypes> = (state = i
     case MoviesActions.FETCH_MOVIE_SUCCESS:
       return {
         ...state,
+        movie: action.payload,
         getMovieLoading: false,
       };
     case MoviesActions.ADD_MOVIE_SUCCESS:
