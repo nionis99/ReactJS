@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { fetchMovies } from 'actions/movieActions';
 import useStateSelector from 'hooks/useStateSelector';
-import useMoviePageContext from 'contexts/MoviePageProvider';
 import SearchHeader from 'layout/SearchHeader';
 import Content from 'layout/Content';
 import MovieDetailsHeader from 'layout/MovieDetailsHeader';
 import MovieFormModal from 'components/Modals/MovieFormModal';
 import Footer from 'layout/Footer';
 import { Movie } from 'reducers/movieReducers/types';
-import { useParams } from 'react-router-dom';
+import useQuery from 'hooks/useQuery';
 
 interface MoviePageParamsProps {
   searchValue?: string;
@@ -17,7 +17,9 @@ interface MoviePageParamsProps {
 
 const MoviesPage = () => {
   const dispatch = useDispatch();
-  const { sortBy, filter } = useMoviePageContext();
+  const { currentQuery } = useQuery();
+  const genreFilter = currentQuery.get('genre');
+  const sortByValue = currentQuery.get('sortBy');
   const { searchValue = '' } = useParams<MoviePageParamsProps>();
   const { totalAmount, getMoviesLoading, data: movies, getMoviesError } = useStateSelector((state) => state.movies);
   const [selectedMovie, setSelectedMovie] = useState<Movie | undefined>();
@@ -27,8 +29,8 @@ const MoviesPage = () => {
   const onCloseAddMovieForm = () => setIsMovieFormOpen(false);
 
   useEffect(() => {
-    dispatch(fetchMovies(sortBy, filter, searchValue));
-  }, [dispatch, sortBy, filter, searchValue]);
+    dispatch(fetchMovies(sortByValue, genreFilter, searchValue));
+  }, [dispatch, sortByValue, genreFilter, searchValue]);
 
   return (
     <>
