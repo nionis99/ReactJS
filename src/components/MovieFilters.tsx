@@ -17,7 +17,6 @@ const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => {
   const { currentQuery, addQuery } = useQuery();
   const genreFilter = currentQuery.get('genre');
   const sortByValue = currentQuery.get('sortBy');
-  console.log(sortByValue);
 
   const onSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => addQuery('sortBy', event.target.value);
 
