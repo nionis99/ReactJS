@@ -14,9 +14,12 @@ module.exports = {
 
   // Alias
   alias: {
+    actions: path.resolve(__dirname, '../src/actions/'),
     components: path.resolve(__dirname, '../src/components/'),
     containers: path.resolve(__dirname, '../src/containers/'),
     pages: path.resolve(__dirname, '../src/pages/'),
+    reducers: path.resolve(__dirname, '../src/reducers/'),
+    contexts: path.resolve(__dirname, '../src/contexts/'),
     hooks: path.resolve(__dirname, '../src/hooks/'),
     assets: path.resolve(__dirname, '../src/assets/'),
     stories: path.resolve(__dirname, '../src/stories/'),

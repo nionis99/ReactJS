@@ -8,7 +8,7 @@ const tailwindcss = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 
 module.exports = {
-  entry: [paths.src + '/index.tsx'],
+  entry: ['babel-polyfill', paths.src + '/index.tsx'],
 
   output: {
     path: paths.build,

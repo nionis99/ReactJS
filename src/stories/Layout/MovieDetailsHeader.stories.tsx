@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import HeaderWithDetails from 'layout/MovieDetailsHeader';
-import movieImageSrc from 'assets/images/movie1.png';
+import movieImageSrc from 'assets/images/not_found.png';
 
 export default {
   title: 'Components/Layout',
@@ -14,12 +14,13 @@ const Template: ComponentStory<typeof HeaderWithDetails> = (args) => <HeaderWith
 export const MovieDetailsHeader = Template.bind({});
 MovieDetailsHeader.args = {
   movie: {
-    imageSource: movieImageSrc,
+    id: 0,
+    poster_path: movieImageSrc,
     title: 'Kill Bill 2',
-    genre: 'Action',
-    years: 2004,
-    duration: 200,
-    rating: 7.8,
-    description: 'This movie is just for test purpose',
+    genres: ['Action', 'Adventure'],
+    release_date: '1994-04-03',
+    runtime: 120,
+    vote_average: 7.8,
+    overview: 'This movie is just for test purpose',
   },
 };

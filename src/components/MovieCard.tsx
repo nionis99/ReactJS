@@ -1,23 +1,32 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import moment from 'moment';
+import useStateSelector from 'hooks/useStateSelector';
 import DeleteConfirmation from 'components/Modals/DeleteConfirmation';
+import MovieFormModal from 'components/Modals/MovieFormModal';
+import { deleteMovie } from 'actions/movieActions';
+import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
-import Movie from 'types/Movie';
-import MovieFormModal from './Modals/MovieFormModal';
+import NotFoundImage from 'assets/images/not_found.png';
 
 interface MovieCardProps {
   movie: Movie;
+  selectedMovie?: Movie;
+  setSelectedMovie: (movie?: Movie) => void;
   onClick: () => void;
 }
 
-const MovieCard = ({ movie, onClick }: MovieCardProps) => {
-  const { imageSource, title, years, genre } = movie;
+const MovieCard = ({ movie, selectedMovie, setSelectedMovie, onClick }: MovieCardProps) => {
+  const { deleteMovieLoading } = useStateSelector((state) => state.movies);
+  const { poster_path, title, release_date, genres } = movie;
+  const yearsOfTheMovie = moment(release_date).format('YYYY');
   const [isBlurred, setIsBlurred] = useState(false);
   const [hasMoreActionSelected, setHasMoreActionSelected] = useState(false);
   const [isDeletingMovie, setIsDeletingMovie] = useState(false);
   const [editingMovie, setEditingMovie] = useState<Movie | undefined>();
+  const dispatch = useDispatch();
 
-  const onCardMouseEnter = () => setIsBlurred(true);
   const onCardMouseLeave = () => {
     if (hasMoreActionSelected) setHasMoreActionSelected(false);
     setIsBlurred(false);
@@ -34,8 +43,8 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
   };
 
   const onDeleteMovieConfirmation = () => {
-    alert(`I will delete movie : ${movie.title}`);
-    setIsDeletingMovie(false);
+    dispatch(deleteMovie(movie.id, () => setIsDeletingMovie(false)));
+    if (selectedMovie) setSelectedMovie(undefined);
   };
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {
@@ -77,15 +86,15 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
               )}
             </>
           )}
-          <img src={imageSource} alt={title} />
+          <img src={poster_path} alt={title} onError={(event) => (event.currentTarget.src = NotFoundImage)} />
         </div>
         <p className="flex w-full">
           <span className="font-bold">{title}</span>
-          <span className="ml-auto px-2 py-1 text-xs border-2 rounded-lg border-gray-400 border-opacity-50">
-            {years}
+          <span className="ml-auto px-2 h-7 py-1 text-xs border-2 rounded-lg border-gray-400 border-opacity-50">
+            {yearsOfTheMovie}
           </span>
         </p>
-        <small>{genre}</small>
+        <small>{genres.join(', ')}</small>
       </div>
       <MovieFormModal
         isOpen={!!editingMovie}
@@ -97,6 +106,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
         isOpen={isDeletingMovie}
         title="Delete movie"
         description="Are you sure you want to delete this movie?"
+        isLoading={deleteMovieLoading}
         onConfirm={onDeleteMovieConfirmation}
         onClose={() => setIsDeletingMovie(false)}
       />
