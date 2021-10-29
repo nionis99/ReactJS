@@ -11,6 +11,7 @@ import { Movie } from 'reducers/movieReducers/types';
 import Dots from 'assets/icons/dots.svg';
 import XIcon from 'assets/icons/x.svg';
 import NotFoundImage from 'assets/images/not_found.png';
+import { ROUTES } from 'utils/Constants';
 
 interface MovieCardProps {
   movie: Movie;
@@ -47,7 +48,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
 
   const onDeleteMovieConfirmation = () => {
     dispatch(deleteMovie(movie.id, () => setIsDeletingMovie(false)));
-    if (isSelectedMovie) replace('/search');
+    if (isSelectedMovie) replace(ROUTES.search);
   };
 
   const onMoreActionClose = (event: React.MouseEvent<SVGAElement>) => {
@@ -67,6 +68,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
         onMouseEnter={() => setIsBlurred(true)}
         onMouseLeave={onCardMouseLeave}
         onClick={onClick}
+        id={movie.id.toString()}
       >
         <div className="relative pb-4">
           {isBlurred && (

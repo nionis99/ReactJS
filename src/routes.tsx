@@ -2,13 +2,14 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import ErrorBoundaryView from 'components/ErrorBoundaryView';
 import MoviesPage from 'pages/Movies';
+import { ROUTES } from 'utils/Constants';
 
 const Routes = () => (
   <Switch>
     <Route exact path="/">
-      <Redirect to="/search" />
+      <Redirect to={ROUTES.search} />
     </Route>
-    <Route path="/search/:searchValue?">
+    <Route path={`${ROUTES.search}/:searchValue?`}>
       <MoviesPage />
     </Route>
     <Route path="/404">

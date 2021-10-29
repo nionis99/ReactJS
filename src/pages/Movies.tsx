@@ -9,6 +9,7 @@ import Content from 'layout/Content';
 import MovieDetailsHeader from 'layout/MovieDetailsHeader';
 import MovieFormModal from 'components/Modals/MovieFormModal';
 import Footer from 'layout/Footer';
+import { ROUTES } from 'utils/Constants';
 
 interface MoviePageParamsProps {
   searchValue?: string;
@@ -34,7 +35,7 @@ const MoviesPage = () => {
   const movieId = currentQuery.get('movie');
   const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
 
-  const onSearchIconClick = () => replace('/search');
+  const onSearchIconClick = () => replace(ROUTES.search);
   const onOpenAddMovieForm = () => setIsMovieFormOpen(true);
   const onCloseAddMovieForm = () => setIsMovieFormOpen(false);
   const onMovieClick = (movieId: string) => {

@@ -2,6 +2,7 @@ import React, { HTMLAttributes, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppLogo from 'components/Logo';
 import Button from 'components/Button';
+import { ROUTES, testingConstants } from 'utils/Constants';
 
 interface SearchHeaderProps extends HTMLAttributes<HTMLDivElement> {
   defaultSearchValue: string;
@@ -14,7 +15,7 @@ const SearchHeader = ({ defaultSearchValue, openAddMovie, className = '', ...res
 
   const onSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    return searchValue ? replace(`/search/${searchValue}`) : replace('/search');
+    return searchValue ? replace(`${ROUTES.search}/${searchValue}`) : replace('/search');
   };
 
   return (
@@ -32,6 +33,7 @@ const SearchHeader = ({ defaultSearchValue, openAddMovie, className = '', ...res
             onInput={(e) => setSearchValue(e.currentTarget.value)}
             placeholder="What do you want to watch?"
             defaultValue={defaultSearchValue}
+            data-testid={testingConstants.searchHeaderInput}
           />
           <Button
             className="flex ml-2 uppercase"
@@ -40,6 +42,7 @@ const SearchHeader = ({ defaultSearchValue, openAddMovie, className = '', ...res
             type="submit"
             size="large"
             onClick={onSubmit}
+            data-testid={testingConstants.searchSubmitButton}
           />
         </form>
       </div>

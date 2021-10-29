@@ -173,4 +173,5 @@ const MovieFormSchema = Yup.object().shape({
     .max(10, 'rating can not exceed 10'),
   overview: Yup.string().required(),
 });
+
 export default MovieForm;
