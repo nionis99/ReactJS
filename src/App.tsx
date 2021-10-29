@@ -1,14 +1,14 @@
 import React from 'react';
-import { MoviePageProvider } from 'contexts/MoviePageProvider';
+import { BrowserRouter as Router } from 'react-router-dom';
 import ErrorBoundary from 'containers/ErrorBoundary';
-import MoviesPage from 'pages/Movies';
+import Routes from './routes';
 import 'styles/main.css';
 
 const App = () => (
   <ErrorBoundary>
-    <MoviePageProvider>
-      <MoviesPage />
-    </MoviePageProvider>
+    <Router>
+      <Routes />
+    </Router>
   </ErrorBoundary>
 );
 
