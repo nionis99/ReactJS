@@ -9,7 +9,7 @@ import SearchHeader from '.';
 
 describe('Movie search header component', () => {
   const onClickAddMovie = jest.fn();
-  const onSearchSubmit = jest.fn();
+  const onSearchSubmit = jest.fn().mockImplementation((e) => e.preventDefault());
   const setSearchValue = jest.fn();
   const wrapper = (
     <BrowserRouter>

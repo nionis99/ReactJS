@@ -4,7 +4,7 @@ import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Movie } from 'reducers/movieReducer/types';
 import GenresInput from 'components/GenresInput';
-import Index from 'components/Loader';
+import Loader from 'components/Loader';
 import Input from 'components/Input';
 import Button from 'components/Button';
 import { genres } from '../../../__mocks__/data';
@@ -155,7 +155,7 @@ const MovieForm = ({ movie, isLoading, onSubmit }: MovieFormProps) => {
           onClick={onReset}
         />
         <Button
-          buttonTitle={isLoading ? <Index className="w-6 h-6" /> : movie ? 'Edit' : 'Submit'}
+          buttonTitle={isLoading ? <Loader className="w-6 h-6" /> : movie ? 'Edit' : 'Submit'}
           variant="primary"
           size="medium"
           data-testid={testingConstants.submitMovieForm}

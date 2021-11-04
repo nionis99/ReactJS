@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from 'containers/Modal';
 import Button from 'components/Button';
-import Index from 'components/Loader';
+import Loader from 'components/Loader';
 import { testingConstants } from 'utils/Constants';
 
 interface DeleteConfirmationProps {
@@ -18,7 +18,7 @@ const DeleteConfirmation = ({ isOpen, title, description, isLoading, onConfirm, 
     <span className="font-normal text-lg my-6">{description}</span>
     <Button
       className="flex ml-auto mt-6"
-      buttonTitle={isLoading ? <Index className="w-6 h-6" /> : 'Confirm'}
+      buttonTitle={isLoading ? <Loader className="w-6 h-6" /> : 'Confirm'}
       variant="primary"
       size="medium"
       onClick={onConfirm}
