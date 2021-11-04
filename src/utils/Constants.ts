@@ -14,4 +14,12 @@ export enum testingConstants {
   genresOptionsInput,
   movieOverviewTextarea,
   submitMovieForm,
+  movieCard,
+  searchButton,
 }
+
+const constants = {
+  headerTitle: 'FIND YOUR MOVIE',
+};
+
+export default constants;

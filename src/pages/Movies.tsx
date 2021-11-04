@@ -17,6 +17,15 @@ interface MoviePageParamsProps {
 
 const MoviesPage = () => {
   const dispatch = useDispatch();
+  const { searchValue = '' } = useParams<MoviePageParamsProps>();
+  const { currentQuery } = useQuery();
+  const { replace, location } = useHistory();
+  const genreFilter = currentQuery.get('genre');
+  const sortByValue = currentQuery.get('sortBy');
+  const movieId = currentQuery.get('movie');
+  const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
+  const [searchInputValue, setSearchInputValue] = useState(searchValue);
+
   const {
     totalAmount,
     getMoviesLoading,
@@ -24,22 +33,18 @@ const MoviesPage = () => {
     movie,
     getMoviesError,
   } = useStateSelector((state) => state.movies);
-  const { searchValue = '' } = useParams<MoviePageParamsProps>();
-  const { currentQuery } = useQuery();
-  const {
-    replace,
-    location: { pathname },
-  } = useHistory();
-  const genreFilter = currentQuery.get('genre');
-  const sortByValue = currentQuery.get('sortBy');
-  const movieId = currentQuery.get('movie');
-  const [isMovieFormOpen, setIsMovieFormOpen] = useState(false);
 
   const onSearchIconClick = () => replace(ROUTES.search);
   const onOpenAddMovieForm = () => setIsMovieFormOpen(true);
   const onCloseAddMovieForm = () => setIsMovieFormOpen(false);
+
+  const onSearchSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    return searchInputValue ? replace(`${ROUTES.search}/${searchInputValue}`) : replace(ROUTES.search);
+  };
+
   const onMovieClick = (movieId: string) => {
-    replace({ pathname, search: `?movie=${movieId}` });
+    replace({ pathname: location.pathname, search: `?movie=${movieId}` });
     window.scrollTo(0, 0);
   };
 
@@ -57,7 +62,12 @@ const MoviesPage = () => {
       {movieId && movie ? (
         <MovieDetailsHeader movie={movie} onSearchClick={onSearchIconClick} />
       ) : (
-        <SearchHeader openAddMovie={onOpenAddMovieForm} defaultSearchValue={searchValue} />
+        <SearchHeader
+          onSearchSubmit={onSearchSubmit}
+          openAddMovie={onOpenAddMovieForm}
+          defaultSearchValue={searchValue}
+          setSearchValue={setSearchInputValue}
+        />
       )}
       <Content
         totalMovies={totalAmount}

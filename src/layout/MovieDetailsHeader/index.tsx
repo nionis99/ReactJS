@@ -5,6 +5,7 @@ import Index from 'components/Loader';
 import SearchButton from 'assets/icons/searchButton.svg';
 import NotFoundImage from 'assets/images/not_found.png';
 import { Movie } from 'reducers/movieReducer/types';
+import { testingConstants } from '../../utils/Constants';
 
 interface MovieDetailsHeaderProps extends HTMLAttributes<HTMLDivElement> {
   onSearchClick: () => void;
@@ -26,7 +27,11 @@ const MovieDetailsHeader = ({ onSearchClick, movie, className = '', ...rest }: M
           <div className="flex w-full justify-between items-center">
             <span className="font-light text-primary">netflixroulette</span>
             <span className="ml-auto">
-              <SearchButton className="cursor-pointer" onClick={onSearchClick} />
+              <SearchButton
+                className="cursor-pointer"
+                onClick={onSearchClick}
+                data-testid={testingConstants.searchButton}
+              />
             </span>
           </div>
           <div className="flex flex-col md:flex-row md:justify-center pt-6">

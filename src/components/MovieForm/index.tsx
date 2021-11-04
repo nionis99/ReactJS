@@ -7,7 +7,7 @@ import GenresInput from 'components/GenresInput';
 import Index from 'components/Loader';
 import Input from 'components/Input';
 import Button from 'components/Button';
-import { genres } from '../../__mocks__/data';
+import { genres } from '../../../__mocks__/data';
 import { testingConstants } from 'utils/Constants';
 
 interface MovieFormProps {

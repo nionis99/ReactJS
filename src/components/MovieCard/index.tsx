@@ -68,6 +68,7 @@ const MovieCard = ({ movie, onClick }: MovieCardProps) => {
         onMouseEnter={() => setIsBlurred(true)}
         onMouseLeave={onCardMouseLeave}
         onClick={onClick}
+        data-testid={testingConstants.movieCard}
       >
         <div className="relative pb-4">
           {isBlurred && (

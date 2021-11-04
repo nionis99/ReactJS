@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import HeaderWithDetails from 'layout/MovieDetailsHeader';
 import movieImageSrc from 'assets/images/not_found.png';
 import { Provider } from 'react-redux';
-import store from '../../store';
+import store from 'store';
 
 export default {
   title: 'Components/Layout',
