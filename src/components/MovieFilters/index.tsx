@@ -21,9 +21,7 @@ const MovieFilters = ({ className }: HTMLAttributes<HTMLDivElement>) => {
   const onSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => addQuery('sortBy', event.target.value);
 
   const onFilterClick = (event: React.MouseEvent<HTMLSpanElement>) => {
-    console.log(event);
-    const selectedFilter =
-      event.currentTarget.children[0] + event.currentTarget.children.toString().substring(1).toLowerCase();
+    const selectedFilter = event.currentTarget.innerText[0] + event.currentTarget.innerText.substring(1).toLowerCase();
     addQuery('genre', selectedFilter);
   };
 
