@@ -4,10 +4,10 @@ interface LoaderProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-const Loader = ({ className, ...rest }: LoaderProps) => (
+const Index = ({ className, ...rest }: LoaderProps) => (
   <div className="flex flex-grow h-full justify-center items-center" {...rest}>
     <div className={`animate-spin rounded-full border-b-2 border-white ${className}`} />
   </div>
 );
 
-export default Loader;
+export default Index;

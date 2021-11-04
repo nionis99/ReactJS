@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addMovie, editMovie } from 'actions/movieActions';
-import { Movie } from 'reducers/movieReducers/types';
+import { Movie } from 'reducers/movieReducer/types';
 import useStateSelector from 'hooks/useStateSelector';
 import MovieForm, { IMovieForm } from 'components/MovieForm';
 import Modal from 'containers/Modal';

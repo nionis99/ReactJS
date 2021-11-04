@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import { Movie } from 'reducers/movieReducers/types';
+import { Movie } from 'reducers/movieReducer/types';
 import MovieCard from 'components/MovieCard';
 import NavigationTabs from 'components/MovieFilters';
 import { testingConstants } from 'utils/Constants';

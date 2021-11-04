@@ -1,10 +1,10 @@
 import React, { HTMLAttributes } from 'react';
 import moment from 'moment';
 import useStateSelector from 'hooks/useStateSelector';
-import Loader from 'components/Loader';
+import Index from 'components/Loader';
 import SearchButton from 'assets/icons/searchButton.svg';
 import NotFoundImage from 'assets/images/not_found.png';
-import { Movie } from 'reducers/movieReducers/types';
+import { Movie } from 'reducers/movieReducer/types';
 
 interface MovieDetailsHeaderProps extends HTMLAttributes<HTMLDivElement> {
   onSearchClick: () => void;
@@ -20,7 +20,7 @@ const MovieDetailsHeader = ({ onSearchClick, movie, className = '', ...rest }: M
   return (
     <header className={`flex-col bg-content py-2 md:py-5 px-4 md:px-16 text-white  ${className}`} {...rest}>
       {getMovieLoading ? (
-        <Loader className="w-32 h-32" />
+        <Index className="w-32 h-32" />
       ) : (
         <>
           <div className="flex w-full justify-between items-center">
