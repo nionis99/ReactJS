@@ -2,8 +2,16 @@ export const ROUTES = {
   search: '/search',
 };
 
-export const testingConstants = {
-  searchHeaderInput: 'searchHeaderInput',
-  searchSubmitButton: 'searchSubmitButton',
-  moviesList: 'moviesList',
-};
+export enum testingConstants {
+  addMovieButton,
+  searchHeaderInput,
+  searchSubmitButton,
+  moviesList,
+  movieItemOptions,
+  editMovieOption,
+  removeMovieOption,
+  confirmRemoveMovie,
+  genresOptionsInput,
+  movieOverviewTextarea,
+  submitMovieForm,
+}

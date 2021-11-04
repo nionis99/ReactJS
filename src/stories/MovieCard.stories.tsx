@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import MovieCard from 'components/MovieCard';
 import movieImageSrc from 'assets/images/not_found.png';
 import store from 'store';
+import { BrowserRouter } from 'react-router-dom';
 
 export default {
   title: 'Components',
@@ -12,9 +13,11 @@ export default {
 
 const Template: ComponentStory<typeof MovieCard> = (args) => (
   <Provider store={store}>
-    <div className="w-1/4">
-      <MovieCard {...args} />
-    </div>
+    <BrowserRouter>
+      <div className="w-1/4">
+        <MovieCard {...args} />
+      </div>
+    </BrowserRouter>
   </Provider>
 );
 

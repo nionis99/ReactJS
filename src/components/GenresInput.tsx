@@ -3,6 +3,7 @@ import { Control, Controller, UseFormGetValues } from 'react-hook-form';
 import ArrowDown from 'assets/icons/arrowDown.svg';
 import { IMovieForm } from 'components/MovieForm';
 import cx from 'classnames';
+import { testingConstants } from 'utils/Constants';
 
 interface SelectInputProps {
   control?: Control<IMovieForm>;
@@ -70,6 +71,7 @@ const GenresInput = ({
             errorMessage ? 'border-red-500' : 'border-gray80'
           } text-white h-12 py-2 px-4 rounded leading-tight focus:outline-none focus:border-gray-200 cursor-pointer`}
           onClick={toggleGenreSelection}
+          data-testid={testingConstants.genresOptionsInput}
         >
           <span className="flex items-center justify-start select-none">
             {selectedGenres?.length > 0 ? selectedGenres.join(', ') : 'Select genre'}
