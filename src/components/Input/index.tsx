@@ -4,7 +4,7 @@ import cx from 'classnames';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
   errorMessage?: string;
 }
 

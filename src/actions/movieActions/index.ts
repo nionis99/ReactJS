@@ -1,6 +1,6 @@
 import { ThunkAction } from 'redux-thunk';
 import { RootActions, RootState } from 'store';
-import { Movie, Movies } from 'reducers/movieReducers/types';
+import { Movie, Movies } from 'reducers/movieReducer/types';
 import api from '../api';
 
 type ThunkResult<R> = ThunkAction<R, RootState, undefined, RootActions>;

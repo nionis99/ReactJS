@@ -1,7 +1,8 @@
 import React, { HTMLAttributes } from 'react';
-import { Movie } from 'reducers/movieReducers/types';
+import { Movie } from 'reducers/movieReducer/types';
 import MovieCard from 'components/MovieCard';
 import NavigationTabs from 'components/MovieFilters';
+import { testingConstants } from 'utils/Constants';
 
 interface MovieContentProps extends HTMLAttributes<HTMLDivElement> {
   movies: Movie[] | [];
@@ -36,7 +37,10 @@ const Content = ({
           </p>
         ))
       ) : (
-        <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6">
+        <div
+          className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 pb-6"
+          data-testid={testingConstants.moviesList}
+        >
           {movies.map((movie) => (
             <MovieCard key={movie.id} movie={movie} onClick={() => onMovieClick(movie.id.toString())} />
           ))}

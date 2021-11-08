@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { FieldError, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Movie } from 'reducers/movieReducers/types';
+import { Movie } from 'reducers/movieReducer/types';
 import GenresInput from 'components/GenresInput';
 import Loader from 'components/Loader';
 import Input from 'components/Input';
 import Button from 'components/Button';
-import { genres } from '../../__mocks__/data';
+import { genres } from '../../../__mocks__/data';
+import { testingConstants } from 'utils/Constants';
 
 interface MovieFormProps {
   movie?: Movie;
@@ -139,6 +140,7 @@ const MovieForm = ({ movie, isLoading, onSubmit }: MovieFormProps) => {
             placeholder="Movie description"
             {...register('overview')}
             rows={6}
+            data-testid={testingConstants.movieOverviewTextarea}
           />
           {formErrors.overview && <p className="text-red-500 text-xs italic">{formErrors.overview.message}</p>}
         </div>
@@ -156,6 +158,7 @@ const MovieForm = ({ movie, isLoading, onSubmit }: MovieFormProps) => {
           buttonTitle={isLoading ? <Loader className="w-6 h-6" /> : movie ? 'Edit' : 'Submit'}
           variant="primary"
           size="medium"
+          data-testid={testingConstants.submitMovieForm}
         />
       </div>
     </form>
@@ -173,4 +176,5 @@ const MovieFormSchema = Yup.object().shape({
     .max(10, 'rating can not exceed 10'),
   overview: Yup.string().required(),
 });
+
 export default MovieForm;

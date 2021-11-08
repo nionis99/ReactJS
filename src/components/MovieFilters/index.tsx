@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import cx from 'classnames';
 
 import ArrowDown from 'assets/icons/arrowDown.svg';
-import useQuery from '../hooks/useQuery';
+import useQuery from 'hooks/useQuery';
 
 const defaultTabClassName =
   'text-white p-1 md:p-5 cursor-pointer hover:text-primary focus:outline-none uppercase font-medium border-b-2';
